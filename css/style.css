@@ -1145,3 +1145,212 @@ section {
 .stats-page button {
     font-size: 13px;
 }
+/* The ai chat style features */
+/* ==========================================================================
+   Reflect with Willow (AI Chat) Styles
+   ========================================================================== */
+
+/* Main Chat Layout Container */
+.side-bar + .home.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+  background: var(--card);
+}
+
+/* Header Styling */
+.chat-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e3ede4;
+  display: grid;
+  place-items: center;
+  color: var(--green-600);
+}
+
+.avatar-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chat-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #64a36f;
+}
+
+/* Scrollable Chat Feed */
+.chat-feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Centered Hero Section */
+.chat-hero {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+
+.chat-hero .eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.chat-hero h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #202b23;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.chat-hero .subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Message Rows & Bubbles */
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row.bot {
+  justify-content: flex-start;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 16px 20px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.bot-bubble {
+  background-color: #eef3ed;
+  color: var(--text);
+  border-top-left-radius: 4px;
+}
+
+.user-bubble {
+  background-color: var(--green-600);
+  color: #ffffff;
+  border-top-right-radius: 4px;
+}
+
+/* Glued Bottom Chat Bar */
+.chat-footer {
+  padding: 16px 24px 16px;
+  background: var(--card);
+}
+
+.chat-bar-container {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 6px 8px 6px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+#chat-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+#chat-input::placeholder {
+  color: #a4b2a6;
+}
+
+#send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #4c6851;
+  border: none;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#send-btn:hover {
+  background: var(--green-900);
+  transform: scale(1.03);
+}
+
+#send-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.disclaimer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
