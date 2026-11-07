@@ -34,7 +34,7 @@
                     </svg>
                 </a>
 
-                <a href="#reflection.html" title="Reflection" aria-label="Reflection">
+                <a href="reflection.html" class="side-button" title="Journal">
                     <svg viewBox="0 0 24 24">
                         <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z"></path>
                         <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z"></path>
@@ -281,6 +281,153 @@
 
             updateDate();
             setInterval(updateDate, 60000);
+
+            
+        const journalInput = document.getElementById("journal-input");
+
+        if (journalInput) {
+
+            const prompts = [
+                "What do you need a little more of today?",
+                "What's something that's been on your mind lately?",
+                "What is one small thing that made you happy today?",
+                "What's something you wish people understood about you?",
+                "What has been challenging you recently?",
+                "What is something you're proud of yourself for?",
+                "What would you tell yourself on a difficult day?",
+                "What is one thing you want to let go of?",
+                "What are you looking forward to?",
+                "What does taking care of yourself look like today?"
+            ];
+
+            let currentPrompt = 0;
+
+            const writeTab = document.getElementById("write-tab");
+            const savedTab = document.getElementById("saved-tab");
+            const writeSection = document.getElementById("write-section");
+            const savedSection = document.getElementById("saved-section");
+
+            const wordCount = document.getElementById("word-count");
+            const library = document.getElementById("journal-library");
+
+            function getEntries() {
+                return JSON.parse(localStorage.getItem("journalEntries") || "[]");
+            }
+
+            function updateCount() {
+                const words = journalInput.value.trim()
+                    ? journalInput.value.trim().split(/\s+/).length
+                    : 0;
+
+                wordCount.textContent = words + " words";
+            }
+
+            function updateSavedCount() {
+                const count = getEntries().length;
+
+                document.getElementById("saved-count").textContent =
+                    count + " saved";
+
+                document.getElementById("tab-count").textContent = count;
+            }
+
+            journalInput.addEventListener("input", updateCount);
+
+            // Change prompt
+            document.getElementById("new-prompt").addEventListener("click", () => {
+                currentPrompt = (currentPrompt + 1) % prompts.length;
+
+                document.getElementById("journal-prompt").textContent =
+                    prompts[currentPrompt];
+            });
+
+            // Switch tabs
+            writeTab.addEventListener("click", () => {
+                writeSection.hidden = false;
+                savedSection.hidden = true;
+
+                writeTab.classList.add("active");
+                savedTab.classList.remove("active");
+
+                document.getElementById("journal-heading").textContent =
+                    "What's on your mind?";
+
+                document.getElementById("journal-description").textContent =
+                    "Write without editing yourself. This space is yours.";
+            });
+
+            savedTab.addEventListener("click", () => {
+                writeSection.hidden = true;
+                savedSection.hidden = false;
+
+                savedTab.classList.add("active");
+                writeTab.classList.remove("active");
+
+                document.getElementById("journal-heading").textContent =
+                    "Your reflections";
+
+                document.getElementById("journal-description").textContent =
+                    "A quiet record of the moments you made space for yourself.";
+
+                displayEntries();
+            });
+
+            // Save reflection
+            document.getElementById("save-reflection").addEventListener("click", () => {
+                const text = journalInput.value.trim();
+
+                if (!text) return;
+
+                const entries = getEntries();
+
+                entries.unshift({
+                    text: text,
+                    date: new Date().toLocaleString()
+                });
+
+                localStorage.setItem("journalEntries", JSON.stringify(entries));
+
+                journalInput.value = "";
+                updateCount();
+                updateSavedCount();
+
+                document.getElementById("save-message").textContent =
+                    "Your reflection has been saved 🌱";
+            });
+
+            // Display saved reflections
+            function displayEntries() {
+                const entries = getEntries();
+
+                library.innerHTML = "";
+
+                if (entries.length === 0) {
+                    library.innerHTML =
+                        '<div class="journal-empty">No reflections saved yet. Your space is waiting for you 🌱</div>';
+                    return;
+                }
+
+                entries.forEach(entry => {
+                    const card = document.createElement("article");
+                    card.className = "journal-entry";
+
+                    const date = document.createElement("small");
+                    date.textContent = entry.date;
+
+                    const content = document.createElement("p");
+                    content.textContent = entry.text;
+
+                    card.appendChild(date);
+                    card.appendChild(content);
+
+                    library.appendChild(card);
+                });
+            }
+
+            updateCount();
+            updateSavedCount();
+        }
+
         </script>
     </body>
 </html>
