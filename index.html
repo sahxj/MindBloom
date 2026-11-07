@@ -45,13 +45,33 @@
                     
                 </div>
                 <p> Give yourself a moment</p>
-                <div class = "self_care">
-                    <h4>Quick care</h4>
-                    <a>Breathe</a>
-                    <a>Reflect</a>
+
+            <div class = "self_care">
+                <h4>Quick care</h4>
+                <a id="breathe-btn">Breathe</a>
+                <a>Reflect</a>
+            </div>
+        </div>   <!-- end of inner .home -->
+
+        <div id="breathing-screen" class="breathing-screen hidden">
+            <button id="breathing-back" class="breathing-back">← Back</button>
+            <span class="breathing-eyebrow">ONE MINUTE RESET</span>
+            <h2>Make space to breathe</h2>
+            <p>Follow the circle at a pace that feels comfortable.</p>
+            <div class="bubble-stage">
+                <div id="bubble" class="bubble">
+                    <div class="bubble-inner">
+                        <strong id="bubble-title">Tap to begin</strong>
+                        <span id="bubble-sub">1 minute</span>
+                    </div>
                 </div>
             </div>
+            <button id="breathing-pause" class="breathing-pause hidden">Pause</button>
         </div>
+
+    </div>   <!-- end of outer .home -->
+
+    <script src="breathing.js"></script>
 
 
         <!--Time and Date Script-->
@@ -78,3 +98,4 @@
     </body>
 
 </html>
+
