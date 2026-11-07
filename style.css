@@ -72,13 +72,29 @@ body > .home {
 }
 
 .side-bar::before {
-  content: "";
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: var(--green-600);
-  box-shadow: 0 6px 14px rgba(95, 125, 99, 0.4);
+    display: none;
+}
+
+.side-bar .logo {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    background: var(--green-600);
+    box-shadow: 0 6px 14px rgba(95, 125, 99, 0.4);
+    color: white;
+}
+
+.side-bar .logo svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Use these classes on your sidebar icon links later */
@@ -489,4 +505,74 @@ body > .home {
 /* Remove old empty icon tiles */
 .self_care a::before {
     display: none;
+}
+.mood {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.mood svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Figma tree illustration */
+
+.tree-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 220px;
+}
+
+.tree {
+    width: 260px;
+    max-width: 100%;
+    height: 220px;
+    overflow: visible;
+}
+
+.tree-growth {
+    transform-origin: 130px 185px;
+    animation: tree-grow 1s ease-out;
+}
+
+@keyframes tree-grow {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tree-spark {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a9cf87;
+}
+
+.spark-one {
+    top: 35px;
+    left: 20%;
+}
+
+.spark-two {
+    top: 75px;
+    right: 18%;
 }

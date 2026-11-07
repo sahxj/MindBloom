@@ -13,6 +13,13 @@
     <body>
         <div class="home">
             <div class="side-bar">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 20v-8"></path>
+                        <path d="M12 12C12 7 16 4 21 4c0 5-3 9-9 9"></path>
+                        <path d="M12 15C12 10 8 7 3 7c0 5 3 9 9 9"></path>
+                    </svg>
+                </div>
                 <a href="#" class="active" title="Home" aria-label="Home">
                     <svg viewBox="0 0 24 24">
                         <path d="m3 11 9-8 9 8"></path>
@@ -52,7 +59,7 @@
                 <div class="header">
                     <div>
                         <div id="live-date"></div>
-                        <h3>Name your tree!</h3>
+                        <h3>Welcome to MindBloom</h3>
                         <input type="text" id="tree-name" placeholder="Enter your tree's name">
                         <button onclick="saveTreeName()">Save</button>
                     </div>
@@ -69,18 +76,131 @@
                 <div class="garden">
                     <h3 id="tree-display">Your garden is waiting to grow!</h3>
                     <p>Every small step helps your tree grow. Take care of yourself and watch your garden bloom.</p>
+                    <div class="tree-wrap">
+                    <span class="tree-spark spark-one"></span>
+                    <span class="tree-spark spark-two"></span>
 
+                    <svg class="tree" viewBox="0 0 260 240"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Your growing tree">
+
+                        <defs>
+                            <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1">
+                                <stop stop-color="#e6b99a"/>
+                                <stop offset="1" stop-color="#c98260"/>
+                            </linearGradient>
+
+                            <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+                                <stop stop-color="#7d5840"/>
+                                <stop offset=".5" stop-color="#a77652"/>
+                                <stop offset="1" stop-color="#6d4b39"/>
+                            </linearGradient>
+
+                            <radialGradient id="leaf" cx=".35" cy=".3">
+                                <stop stop-color="#a9cf87"/>
+                                <stop offset="1" stop-color="#5d8c64"/>
+                            </radialGradient>
+
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".12"/>
+                            </filter>
+                        </defs>
+
+                        <ellipse cx="130" cy="220" rx="62" ry="10"
+                                fill="#425642" opacity=".1"/>
+
+                        <!-- Tree trunk and branches -->
+                        <g class="tree-growth">
+                            <path
+                                d="M128 185c-2-42 2-79-7-114M129 147c19-20 31-42 36-65M125 128c-18-13-30-28-37-45M129 109c10-20 12-38 10-54"
+                                stroke="url(#trunk)"
+                                stroke-width="11"
+                                stroke-linecap="round"
+                                fill="none"
+                            />
+
+                            <!-- Leaves -->
+                            <g fill="url(#leaf)" filter="url(#shadow)">
+                                <circle cx="76" cy="75" r="28"/>
+                                <circle cx="101" cy="52" r="31"/>
+                                <circle cx="135" cy="47" r="34"/>
+                                <circle cx="169" cy="65" r="32"/>
+                                <circle cx="187" cy="92" r="26"/>
+                                <circle cx="155" cy="96" r="37"/>
+                                <circle cx="114" cy="92" r="37"/>
+                                <circle cx="82" cy="106" r="25"/>
+                                <circle cx="137" cy="23" r="22"/>
+                            </g>
+
+                            <!-- Leaf highlights -->
+                            <g fill="#bddb94" opacity=".85">
+                                <circle cx="102" cy="31" r="7"/>
+                                <circle cx="173" cy="49" r="6"/>
+                                <circle cx="82" cy="86" r="5"/>
+                                <circle cx="147" cy="77" r="6"/>
+                            </g>
+                        </g>
+
+                        <!-- Flowerpot -->
+                        <g filter="url(#shadow)">
+                            <path d="M83 174h94l-10 55H93Z" fill="url(#pot)"/>
+                            <path d="M79 171c0-5 4-9 9-9h84c5 0 9 4 9 9v10H79Z"
+                                fill="#efc4a3"/>
+                            <path d="M96 191h68" stroke="#bb7658"
+                                stroke-width="2" opacity=".35"/>
+                        </g>
+                    </svg>
+                </div>
                     <div class="progress-bar">
                         <p>Tree growth: 0 / 3 activities completed</p>
                     </div>
                 </div>
 
                 <div class="feels">
-                    <button class="mood">Low</button>
-                    <button class="mood">Meh</button>
-                    <button class="mood">Okay</button>
-                    <button class="mood">Good</button>
-                    <button class="mood">Great</button>
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8 16c1-1.5 2.3-2 4-2s3 .5 4 2"/>
+                    </svg>
+                    Low
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M9 16h6"/>
+                    </svg>
+                    Meh
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"/>
+                    </svg>
+                    Okay
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8.5 14c1 1.5 2.2 2 3.5 2s2.5-.5 3.5-2"/>
+                    </svg>
+                    Good
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8 13.5c1 2 2.3 3 4 3s3-.9 4-3"/>
+                    </svg>
+                    Great
+                </button>
                 </div>
 
                 <p>Take a moment for yourself. How would you like to recharge today?</p>
@@ -130,14 +250,14 @@
                 if (name === "") return;
 
                 localStorage.setItem('treeName', name);
-                document.getElementById('tree-display').textContent = name + "'s garden";
+                document.getElementById('tree-display').textContent = name + "'s growth";
                 document.getElementById('tree-name').value = "";
             }
 
             const savedName = localStorage.getItem('treeName');
 
             if (savedName) {
-                document.getElementById('tree-display').textContent = savedName + "'s garden";
+                document.getElementById('tree-display').textContent = savedName + "'s growth";
             }
 
             updateDate();
