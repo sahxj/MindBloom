@@ -72,13 +72,29 @@ body > .home {
 }
 
 .side-bar::before {
-  content: "";
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: var(--green-600);
-  box-shadow: 0 6px 14px rgba(95, 125, 99, 0.4);
+    display: none;
+}
+
+.side-bar .logo {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    background: var(--green-600);
+    box-shadow: 0 6px 14px rgba(95, 125, 99, 0.4);
+    color: white;
+}
+
+.side-bar .logo svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Use these classes on your sidebar icon links later */
@@ -309,6 +325,268 @@ body > .home {
   .self_care {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Tree naming ---------- */
+
+.header input {
+    margin-top: 10px;
+    padding: 9px 12px;
+    width: 180px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--text);
+    transition: border 0.2s;
+}
+
+.header input:focus {
+    border-color: var(--green-600);
+}
+
+.header input::placeholder {
+    color: var(--muted);
+}
+
+.header button {
+    margin-left: 5px;
+    padding: 9px 13px;
+    background: var(--green-600);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.header button:hover {
+    background: var(--green-900);
+    transform: translateY(-2px);
+}
+
+/* ---------- Garden content ---------- */
+
+.garden h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--green-900);
+    margin-bottom: 8px;
+}
+
+.garden > p:not(:first-child) {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--green-600);
+    line-height: 1.6;
+}
+
+/* ---------- Progress information ---------- */
+
+.progress-bar p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 500;
+}
+
+/* ---------- Mood buttons ---------- */
+
+.mood {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.mood:hover {
+    background: var(--green-100);
+}
+
+/* ---------- Mobile adjustments ---------- */
+
+@media (max-width: 520px) {
+    .header input {
+        width: 140px;
+    }
+
+    .header button {
+        margin-top: 8px;
+        margin-left: 0;
+    }
+
+    .header h3 {
+        font-size: 1.0rem;
+    }
+}
+
+/* ---------- Consistent SVG icon styling ---------- */
+
+.side-bar a svg,
+.streak svg,
+.self_care a svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+/* ---------- Sidebar icons ---------- */
+
+.side-bar {
+    font-size: initial;
+}
+
+.side-bar a {
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.side-bar a:hover,
+.side-bar a.active {
+    background: var(--green-100);
+    color: var(--green-600);
+}
+
+/* ---------- Streak icon ---------- */
+
+.streak {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.streak svg {
+    color: var(--accent);
+    width: 17px;
+    height: 17px;
+}
+
+.streak p {
+    margin: 0;
+}
+
+/* ---------- Quick care icons ---------- */
+
+.self_care a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.self_care a svg {
+    width: 38px;
+    height: 38px;
+    padding: 9px;
+    border-radius: 12px;
+    color: var(--green-600);
+    background: var(--green-100);
+}
+
+.self_care a:nth-of-type(2) svg {
+    background: var(--peach-100);
+    color: var(--accent);
+}
+
+/* Remove old empty icon tiles */
+.self_care a::before {
+    display: none;
+}
+.mood {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.mood svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Figma tree illustration */
+
+.tree-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 220px;
+}
+
+.tree {
+    width: 260px;
+    max-width: 100%;
+    height: 220px;
+    overflow: visible;
+}
+
+.tree-growth {
+    transform-origin: 130px 185px;
+    animation: tree-grow 1s ease-out;
+}
+
+@keyframes tree-grow {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tree-spark {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a9cf87;
+}
+
+.spark-one {
+    top: 35px;
+    left: 20%;
+}
+
+.spark-two {
+    top: 75px;
+    right: 18%;
+}
+.mood.selected {
+    background: var(--green-100);
+    border: 2px solid var(--green-600);
+    transform: translateY(-2px);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 20px;
 }
 
 /* ---------- Breathe button hover ---------- */

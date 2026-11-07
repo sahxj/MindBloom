@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -5,44 +6,201 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MindBloom</title>
         <link rel="stylesheet" href="style.css">
-        <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
-        <meta name = "description" content="MindBloom">
-        <link rel = "icon" href = "favicon.svg">
+        <meta name="description" content="MindBloom">
+        <link rel="icon" href="favicon.svg">
     </head>
 
     <body>
-        <div class = "home">
-            <div class = "side-bar">
-                <!--TODO: Change the names with icons-->
-                <a>Home</a>
-                <a>Chat</a>
-                <a>Reflection</a>
-                <a>Stat</a>
-                <a>Music</a>
+        <div class="home">
+            <div class="side-bar">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 20v-8"></path>
+                        <path d="M12 12C12 7 16 4 21 4c0 5-3 9-9 9"></path>
+                        <path d="M12 15C12 10 8 7 3 7c0 5 3 9 9 9"></path>
+                    </svg>
+                </div>
+                <a href="#home" class="active" title="Home" aria-label="Home">
+                    <svg viewBox="0 0 24 24">
+                        <path d="m3 11 9-8 9 8"></path>
+                        <path d="M5 10v10h14V10M9 20v-6h6v6"></path>
+                    </svg>
+                </a>
+
+                <a href="#chat" title="Chat" aria-label="Chat">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3c.7 4.1 2.9 6.3 7 7-4.1.7-6.3 2.9-7 7-.7-4.1-2.9-6.3-7-7 4.1-.7 6.3-2.9 7-7Z"></path>
+                        <path d="M19 16v5M16.5 18.5h5"></path>
+                    </svg>
+                </a>
+
+                <a href="#reflection.html" title="Reflection" aria-label="Reflection">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z"></path>
+                        <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z"></path>
+                    </svg>
+                </a>
+
+                <a href="#stats" title="Stats" aria-label="Stats">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>
+                    </svg>
+                </a>
+
+                <a href="#music" title="Music" aria-label="Music">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 14v-2a8 8 0 0 1 16 0v2"></path>
+                        <path d="M4 14h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM20 14h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"></path>
+                    </svg>
+                </a>
             </div>
-            <div class = "home">
-                <div class = "header">
+
+            <div class="home">
+                <div class="header">
                     <div>
                         <div id="live-date"></div>
-                        <h3>Good Morning, Alex</h3>
+                        <h3>Welcome to MindBloom</h3>
+                        <input type="text" id="tree-name" placeholder="Enter your tree's name">
+                        <button onclick="saveTreeName()">Save</button>
                     </div>
-                    <div class = "streak">
+
+                    <div class="streak">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                        </svg>
                         <p>6 day streak</p>
                     </div>
                 </div>
-                <div class = "garden">
-                    <p>Placeholder Imagine there is a garden here</p>
-                    <div class = "progress-bar">
-                        <p>If you squint your eyes enough this is a progress bar ###########           ./ 50%</p>
+
+                <div class="garden">
+                    <h3 id="tree-display">Your garden is waiting to grow!</h3>
+                    <p>Every small step helps your tree grow. Take care of yourself and watch your garden bloom.</p>
+                    <div class="tree-wrap">
+                    <span class="tree-spark spark-one"></span>
+                    <span class="tree-spark spark-two"></span>
+
+                    <svg class="tree" viewBox="0 0 260 240"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Your growing tree">
+
+                        <defs>
+                            <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1">
+                                <stop stop-color="#e6b99a"/>
+                                <stop offset="1" stop-color="#c98260"/>
+                            </linearGradient>
+
+                            <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+                                <stop stop-color="#7d5840"/>
+                                <stop offset=".5" stop-color="#a77652"/>
+                                <stop offset="1" stop-color="#6d4b39"/>
+                            </linearGradient>
+
+                            <radialGradient id="leaf" cx=".35" cy=".3">
+                                <stop stop-color="#a9cf87"/>
+                                <stop offset="1" stop-color="#5d8c64"/>
+                            </radialGradient>
+
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".12"/>
+                            </filter>
+                        </defs>
+
+                        <ellipse cx="130" cy="220" rx="62" ry="10"
+                                fill="#425642" opacity=".1"/>
+
+                        <!-- Tree trunk and branches -->
+                        <g class="tree-growth">
+                            <path
+                                d="M128 185c-2-42 2-79-7-114M129 147c19-20 31-42 36-65M125 128c-18-13-30-28-37-45M129 109c10-20 12-38 10-54"
+                                stroke="url(#trunk)"
+                                stroke-width="11"
+                                stroke-linecap="round"
+                                fill="none"
+                            />
+
+                            <!-- Leaves -->
+                            <g fill="url(#leaf)" filter="url(#shadow)">
+                                <circle cx="76" cy="75" r="28"/>
+                                <circle cx="101" cy="52" r="31"/>
+                                <circle cx="135" cy="47" r="34"/>
+                                <circle cx="169" cy="65" r="32"/>
+                                <circle cx="187" cy="92" r="26"/>
+                                <circle cx="155" cy="96" r="37"/>
+                                <circle cx="114" cy="92" r="37"/>
+                                <circle cx="82" cy="106" r="25"/>
+                                <circle cx="137" cy="23" r="22"/>
+                            </g>
+
+                            <!-- Leaf highlights -->
+                            <g fill="#bddb94" opacity=".85">
+                                <circle cx="102" cy="31" r="7"/>
+                                <circle cx="173" cy="49" r="6"/>
+                                <circle cx="82" cy="86" r="5"/>
+                                <circle cx="147" cy="77" r="6"/>
+                            </g>
+                        </g>
+
+                        <!-- Flowerpot -->
+                        <g filter="url(#shadow)">
+                            <path d="M83 174h94l-10 55H93Z" fill="url(#pot)"/>
+                            <path d="M79 171c0-5 4-9 9-9h84c5 0 9 4 9 9v10H79Z"
+                                fill="#efc4a3"/>
+                            <path d="M96 191h68" stroke="#bb7658"
+                                stroke-width="2" opacity=".35"/>
+                        </g>
+                    </svg>
+                </div>
+                    <div class="progress-bar">
+                        <p>Tree growth: 0 / 3 activities completed</p>
                     </div>
                 </div>
-                <div class = "feels">
-                    <button class="mood">Low</button>
-                    <button class="mood">Meh</button>
-                    <button class="mood">Okay</button>
-                    <button class="mood">Good</button>
-                    <button class="mood">Great</button>
-                    
+
+                <div class="feels">
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8 16c1-1.5 2.3-2 4-2s3 .5 4 2"/>
+                    </svg>
+                    Low
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M9 16h6"/>
+                    </svg>
+                    Meh
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M9 15c1 .8 2 .8 3 .8s2 0 3-.8"/>
+                    </svg>
+                    Okay
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8.5 14c1 1.5 2.2 2 3.5 2s2.5-.5 3.5-2"/>
+                    </svg>
+                    Good
+                </button>
+
+                <button class="mood">
+                    <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M9 9h.01M15 9h.01"/>
+                    <path d="M8 13.5c1 2 2.3 3 4 3s3-.9 4-3"/>
+                    </svg>
+                    Great
+                </button>
                 </div>
                 <p> Give yourself a moment</p>
 
@@ -64,6 +222,28 @@
                         <strong id="bubble-title">Tap to begin</strong>
                         <span id="bubble-sub">1 minute</span>
                     </div>
+
+                <p>Take a moment for yourself. How would you like to recharge today?</p>
+
+                <div class="self_care">
+                    <h4>Quick care</h4>
+
+                    <a href="#">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 8h11a2.5 2.5 0 1 0-2.5-2.5"></path>
+                            <path d="M3 12h16a2 2 0 1 1-2 2"></path>
+                            <path d="M3 16h8a2.5 2.5 0 1 1-2.5 2.5"></path>
+                        </svg>
+                        Breathe
+                    </a>
+
+                    <a href="#">
+                        <svg viewBox="0 0 24 24">
+                            <path d="m15 5 4 4L8 20l-5 1 1-5Z"></path>
+                            <path d="m13 7 4 4"></path>
+                        </svg>
+                        Reflect
+                    </a>
                 </div>
             </div>
             <button id="breathing-pause" class="breathing-pause hidden">Pause</button>
@@ -75,27 +255,59 @@
 
 
         <!--Time and Date Script-->
+        <!-- Time and Date Script -->
         <script>
-        function updateDate() {
-            const now = new Date();
-            
-            const options = { 
-            weekday: 'long', 
-            month: 'long', 
-            day: 'numeric' 
-            };
-            
-            const formattedDate = now.toLocaleDateString('en-US', options);
-            
-            document.getElementById('live-date').textContent = formattedDate;
-        }
+            const moodButtons = document.querySelectorAll(".mood");
 
-        updateDate();
+            moodButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const selectedMood = button.textContent.trim();
+                    localStorage.setItem("savedMood", selectedMood);
+                    moodButtons.forEach(mood => mood.classList.remove("selected"));
+                    button.classList.add("selected");
+                });
+            });
+            const savedMood = localStorage.getItem("savedMood");
 
-        setInterval(updateDate, 60000);
+            if (savedMood) {
+                moodButtons.forEach(button => {
+                    if (button.textContent.trim() === savedMood) {
+                        button.classList.add("selected");
+                    }
+                });
+            }
+            function updateDate() {
+                const now = new Date();
+
+                const options = {
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric'
+                };
+
+                const formattedDate = now.toLocaleDateString('en-US', options);
+
+                document.getElementById('live-date').textContent = formattedDate;
+            }
+
+            function saveTreeName() {
+                const name = document.getElementById('tree-name').value.trim();
+
+                if (name === "") return;
+
+                localStorage.setItem('treeName', name);
+                document.getElementById('tree-display').textContent = name + "'s growth";
+                document.getElementById('tree-name').value = "";
+            }
+
+            const savedName = localStorage.getItem('treeName');
+
+            if (savedName) {
+                document.getElementById('tree-display').textContent = savedName + "'s growth";
+            }
+
+            updateDate();
+            setInterval(updateDate, 60000);
         </script>
-
     </body>
-
 </html>
-
