@@ -42,6 +42,8 @@ Mobile widget/app, a pet option instead of the tree, more self-care activities, 
 ## Team
 Kelly Wang
 
-Chole Wong
+Chloe Wong
 
 Och-Erdene Khurelsukh
+
+Sahaj Bhangu
