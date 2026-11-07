@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBloom | Journal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg">
+</head>
+
+<body>
+    <div class="home">
+
+        <!-- SIDEBAR -->
+        <div class="side-bar">
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 20v-8"></path>
+                    <path d="M12 12C12 7 16 4 21 4c0 5-3 9-9 9"></path>
+                    <path d="M12 15C12 10 8 7 3 7c0 5 3 9 9 9"></path>
+                </svg>
+            </div>
+
+            <a href="index.html" title="Home" aria-label="Home">
+                <svg viewBox="0 0 24 24">
+                    <path d="m3 11 9-8 9 8"></path>
+                    <path d="M5 10v10h14V10M9 20v-6h6v6"></path>
+                </svg>
+            </a>
+
+            <a href="chat.html" title="Chat" aria-label="Chat">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3c.7 4.1 2.9 6.3 7 7-4.1.7-6.3 2.9-7 7-.7-4.1-2.9-6.3-7-7 4.1-.7 6.3-2.9 7-7Z"></path>
+                    <path d="M19 16v5M16.5 18.5h5"></path>
+                </svg>
+            </a>
+
+            <a href="reflection.html" class="active" title="Journal" aria-label="Journal">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z"></path>
+                    <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z"></path>
+                </svg>
+            </a>
+
+            <a href="stats.html" title="Stats" aria-label="Stats">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>
+                </svg>
+            </a>
+
+            <a href="music.html" title="Music" aria-label="Music">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 14v-2a8 8 0 0 1 16 0v2"></path>
+                    <path d="M4 14h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM20 14h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- JOURNAL CONTENT -->
+        <div class="home journal-page">
+
+            <header class="journal-header">
+                <div>
+                    <span class="eyebrow">PRIVATE ON THIS DEVICE</span>
+                    <h2 id="journal-heading">What's on your mind?</h2>
+                    <p id="journal-description">
+                        Write without editing yourself. This space is yours.
+                    </p>
+                </div>
+
+                <span class="date-chip" id="saved-count">0 saved</span>
+            </header>
+
+            <!-- TABS -->
+            <div class="journal-tabs">
+                <button class="active" id="write-tab" type="button">
+                    Write
+                </button>
+
+                <button id="saved-tab" type="button">
+                    Saved reflections <span id="tab-count">0</span>
+                </button>
+            </div>
+
+            <!-- WRITE SECTION -->
+            <div id="write-section">
+
+                <div class="prompt-card">
+                    <span>✦</span>
+
+                    <div>
+                        <small>TODAY'S PROMPT</small>
+                        <p id="journal-prompt">
+                            What do you need a little more of today?
+                        </p>
+                    </div>
+
+                    <button id="new-prompt" type="button" title="New prompt">
+                        ↻
+                    </button>
+                </div>
+
+                <textarea
+                    id="journal-input"
+                    placeholder="Write here... let your thoughts flow."
+                ></textarea>
+
+                <div class="journal-footer">
+                    <span id="word-count">0 words</span>
+
+                    <button
+                        class="primary-button"
+                        id="save-reflection"
+                        type="button"
+                    >
+                        Save reflection
+                    </button>
+                </div>
+
+                <p id="save-message"></p>
+            </div>
+
+            <!-- SAVED REFLECTIONS -->
+            <div id="saved-section" hidden>
+                <div id="journal-library"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const journalInput = document.getElementById("journal-input");
+
+        const prompts = [
+            "What do you need a little more of today?",
+            "What's something that's been on your mind lately?",
+            "What is one small thing that made you happy today?",
+            "What's something you wish people understood about you?",
+            "What has been challenging you recently?",
+            "What is something you're proud of yourself for?",
+            "What would you tell yourself on a difficult day?",
+            "What is one thing you want to let go of?",
+            "What are you looking forward to?",
+            "What does taking care of yourself look like today?"
+        ];
+
+        let currentPrompt = 0;
+
+        const writeTab = document.getElementById("write-tab");
+        const savedTab = document.getElementById("saved-tab");
+        const writeSection = document.getElementById("write-section");
+        const savedSection = document.getElementById("saved-section");
+        const library = document.getElementById("journal-library");
+
+        function getEntries() {
+            return JSON.parse(
+                localStorage.getItem("journalEntries") || "[]"
+            );
+        }
+
+        function updateCount() {
+            const words = journalInput.value.trim()
+                ? journalInput.value.trim().split(/\s+/).length
+                : 0;
+
+            document.getElementById("word-count").textContent =
+                words + " words";
+        }
+
+        function updateSavedCount() {
+            const count = getEntries().length;
+
+            document.getElementById("saved-count").textContent =
+                count + " saved";
+
+            document.getElementById("tab-count").textContent = count;
+        }
+
+        // WORD COUNT
+        journalInput.addEventListener("input", updateCount);
+
+        // CHANGE PROMPT
+        document.getElementById("new-prompt").addEventListener("click", () => {
+            currentPrompt = (currentPrompt + 1) % prompts.length;
+
+            document.getElementById("journal-prompt").textContent =
+                prompts[currentPrompt];
+        });
+
+        // WRITE TAB
+        writeTab.addEventListener("click", () => {
+            writeSection.hidden = false;
+            savedSection.hidden = true;
+
+            writeTab.classList.add("active");
+            savedTab.classList.remove("active");
+
+            document.getElementById("journal-heading").textContent =
+                "What's on your mind?";
+
+            document.getElementById("journal-description").textContent =
+                "Write without editing yourself. This space is yours.";
+        });
+
+        // SAVED TAB
+        savedTab.addEventListener("click", () => {
+            writeSection.hidden = true;
+            savedSection.hidden = false;
+
+            savedTab.classList.add("active");
+            writeTab.classList.remove("active");
+
+            document.getElementById("journal-heading").textContent =
+                "Your reflections";
+
+            document.getElementById("journal-description").textContent =
+                "A quiet record of the moments you made space for yourself.";
+
+            displayEntries();
+        });
+
+        // SAVE REFLECTION
+        document.getElementById("save-reflection").addEventListener("click", () => {
+            const text = journalInput.value.trim();
+
+            if (!text) {
+                document.getElementById("save-message").textContent =
+                    "Write something before saving your reflection.";
+                return;
+            }
+
+            const entries = getEntries();
+
+            entries.unshift({
+                text: text,
+                date: new Date().toLocaleString()
+            });
+
+            localStorage.setItem(
+                "journalEntries",
+                JSON.stringify(entries)
+            );
+
+            journalInput.value = "";
+            updateCount();
+            updateSavedCount();
+
+            document.getElementById("save-message").textContent =
+                "Your reflection has been saved 🌱";
+        });
+
+        // DISPLAY SAVED REFLECTIONS
+        function displayEntries() {
+            const entries = getEntries();
+
+            library.innerHTML = "";
+
+            if (entries.length === 0) {
+                const empty = document.createElement("div");
+                empty.className = "journal-empty";
+                empty.textContent =
+                    "No reflections saved yet. Your space is waiting for you 🌱";
+
+                library.appendChild(empty);
+                return;
+            }
+
+            entries.forEach(entry => {
+                const card = document.createElement("article");
+                card.className = "journal-entry";
+
+                const date = document.createElement("small");
+                date.textContent = entry.date;
+
+                const content = document.createElement("p");
+                content.textContent = entry.text;
+
+                card.appendChild(date);
+                card.appendChild(content);
+
+                library.appendChild(card);
+            });
+        }
+
+        updateCount();
+        updateSavedCount();
+    </script>
+</body>
+</html>
