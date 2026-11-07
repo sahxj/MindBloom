@@ -35,12 +35,6 @@ Next.js, React, Tailwind CSS, Gemini API
 
 We started by putting our idea into Figma to design and generate the base of the app: the layout, the pop-up window, and the first versions of the tree, mood log, journal, and breathing screens. Then we exported the project as code (Next.js, React, and Tailwind CSS), pulled it into VS Code through GitHub, and built on top of it with our own new ideas (AI chat box character, Gemini, journal templates, buckets or water) to turn it into MindBloom. 
 
-## Run it locally
-1. Clone the repo
-2. `cd "Mindbloom code"`
-3. `pnpm install`
-4. Add your Gemini API key to `.env` (see `.env.example`)
-5. `pnpm dev` and open http://localhost:3000
 
 ## Future development
 Mobile widget/app, a pet option instead of the tree, more self-care activities, voice journal entries.
