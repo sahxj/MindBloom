@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MindBloom</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <meta name="description" content="MindBloom">
         <link rel="icon" href="favicon.svg">
     </head>
@@ -206,55 +205,11 @@
 
             <div class = "self_care">
                 <h4>Quick care</h4>
-                <a id="breathe-btn">Breathe</a>
+                <a href="breathing.html">Breathe</a>
                 <a>Reflect</a>
             </div>
         </div>   <!-- end of inner .home -->
 
-        <div id="breathing-screen" class="breathing-screen hidden">
-            <button id="breathing-back" class="breathing-back">← Back</button>
-            <span class="breathing-eyebrow">ONE MINUTE RESET</span>
-            <h2>Make space to breathe</h2>
-            <p>Follow the circle at a pace that feels comfortable.</p>
-            <div class="bubble-stage">
-                <div id="bubble" class="bubble">
-                    <div class="bubble-inner">
-                        <strong id="bubble-title">Tap to begin</strong>
-                        <span id="bubble-sub">1 minute</span>
-                    </div>
-
-                <p>Take a moment for yourself. How would you like to recharge today?</p>
-
-                <div class="self_care">
-                    <h4>Quick care</h4>
-
-                    <a href="#">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M3 8h11a2.5 2.5 0 1 0-2.5-2.5"></path>
-                            <path d="M3 12h16a2 2 0 1 1-2 2"></path>
-                            <path d="M3 16h8a2.5 2.5 0 1 1-2.5 2.5"></path>
-                        </svg>
-                        Breathe
-                    </a>
-
-                    <a href="#">
-                        <svg viewBox="0 0 24 24">
-                            <path d="m15 5 4 4L8 20l-5 1 1-5Z"></path>
-                            <path d="m13 7 4 4"></path>
-                        </svg>
-                        Reflect
-                    </a>
-                </div>
-            </div>
-            <button id="breathing-pause" class="breathing-pause hidden">Pause</button>
-        </div>
-
-    </div>   <!-- end of outer .home -->
-
-    <script src="breathing.js"></script>
-
-
-        <!--Time and Date Script-->
         <!-- Time and Date Script -->
         <script>
             const moodButtons = document.querySelectorAll(".mood");

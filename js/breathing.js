@@ -1,8 +1,6 @@
 // One-minute guided breathing: 3s in, 2s hold, 6s out
 const SESSION_SECONDS = 60;
 
-const breatheBtn = document.getElementById('breathe-btn');
-const screen = document.getElementById('breathing-screen');
 const backBtn = document.getElementById('breathing-back');
 const bubble = document.getElementById('bubble');
 const bubbleTitle = document.getElementById('bubble-title');
@@ -96,12 +94,11 @@ pauseBtn.addEventListener('click', function () {
   }
 });
 
-// Open and close the screen
-breatheBtn.addEventListener('click', function () {
-  resetSession();
-  screen.classList.remove('hidden');
-});
+// Back goes to the main page
 backBtn.addEventListener('click', function () {
   resetSession();
-  screen.classList.add('hidden');
+  window.location.href = 'index.html';
 });
+
+// Start in the ready state
+resetSession();

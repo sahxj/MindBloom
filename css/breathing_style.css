@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+/* ---------- Design tokens (copied from style.css so this page stands alone) ---------- */
+:root {
+  --bg: #dde7df;
+  --card: #fbfaf7;
+  --card-border: #e8e6df;
+  --green-900: #24382b;
+  --green-600: #5f7d63;
+  --green-400: #86a86b;
+  --green-100: #e3ede4;
+  --peach-100: #f6e3d6;
+  --accent: #b5653a;
+  --text: #2b3a30;
+  --muted: #8a9a8d;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow: 0 10px 30px rgba(60, 90, 70, 0.12);
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(95, 125, 99, 0.12) 1px, transparent 0) 0 0 / 22px 22px,
+    linear-gradient(180deg, #eef3ee 0%, var(--bg) 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------- Page card ---------- */
+body > .home {
+  position: relative;          /* breathing screen overlays this */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 830px;
+  padding: 28px;
+  background: var(--card);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.intro {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---------- Quick care ---------- */
+.self_care {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.self_care h4 {
+  grid-column: 1 / -1;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--green-900);
+}
+
+.self_care a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.self_care a svg {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  border-radius: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--green-600);
+  background: var(--green-100);
+}
+
+.self_care a:nth-of-type(2) svg {
+  color: var(--accent);
+  background: var(--peach-100);
+}
+
+.self_care a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(60, 90, 70, 0.12);
+}
+
+/* ---------- Breathe button hover ---------- */
+#breathe-btn:hover {
+  transform: scale(1.04);
+  background: var(--green-100);
+  box-shadow: 0 8px 18px rgba(84, 103, 87, 0.18);
+}
+
+/* ---------- Breathing screen ---------- */
+.breathing-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  background: var(--card);
+}
+
+.breathing-back {
+  align-self: flex-start;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.breathing-back:hover {
+  color: var(--green-600);
+}
+
+.breathing-eyebrow {
+  margin-top: 24px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+.breathing-screen h2 {
+  margin-top: 6px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--green-900);
+}
+
+.breathing-screen > p {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.bubble-stage {
+  position: absolute;
+  inset: 0;               /* covers the whole breathing screen */
+  display: grid;
+  place-items: center;    /* bubble sits in the exact middle */
+  pointer-events: none;   /* so Back and Pause stay clickable */
+}
+
+.bubble {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #e8efe4;
+  box-shadow: 0 0 0 22px #eff3eb, 0 0 0 42px #f5f5ef;
+  pointer-events: auto;   /* bubble itself stays clickable */
+}
+
+.bubble-inner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #759278;
+  color: white;
+  box-shadow: 0 12px 25px rgba(82, 107, 86, 0.4);
+}
+
+.bubble-inner strong {
+  font-size: 0.9rem;
+}
+
+.bubble-inner span {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.breathing-pause {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--green-600);
+  color: white;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 520px) {
+  body {
+    padding: 0;
+  }
+
+  body > .home {
+    border-radius: 0;
+    min-height: 100vh;
+    padding: 20px 16px;
+  }
+
+  .self_care {
+    grid-template-columns: 1fr;
+  }
+}
