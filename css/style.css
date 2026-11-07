@@ -1355,3 +1355,22 @@ section {
   color: var(--muted);
   margin-top: 10px;
 }
+.message-row.bot {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.bot-squirrel {
+    position: absolute;
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: contain;
+    top: -70px;
+    left: -30px;
+    z-index: 5;
+}
+
+.bot-bubble {
+    margin-left: 12px;
+}
