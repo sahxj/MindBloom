@@ -4,12 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MindBloom</title>
-        
-        <!-- Link Manifest & Theme Color -->
-        <link rel="manifest" href="/manifest.json">
-        <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="style.css">
-        <meta charset = "UTF-8">
         <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
         <meta name = "description" content="MindBloom">
         <link rel = "icon" href = "favicon.svg">
@@ -18,6 +13,12 @@
     <body>
         <div class = "home">
             <div class = "side-bar">
+                <!--TODO: Change the names with icons-->
+                <a>Home</a>
+                <a>Chat</a>
+                <a>Reflection</a>
+                <a>Stat</a>
+                <a>Music</a>
             </div>
             <div class = "home">
                 <div class = "header">
@@ -36,7 +37,12 @@
                     </div>
                 </div>
                 <div class = "feels">
-                    Happy Not Happy and various feelings (Placeholder)
+                    <button class="mood">Low</button>
+                    <button class="mood">Meh</button>
+                    <button class="mood">Okay</button>
+                    <button class="mood">Good</button>
+                    <button class="mood">Great</button>
+                    
                 </div>
                 <p> Give yourself a moment</p>
                 <div class = "self_care">
@@ -67,18 +73,6 @@
         updateDate();
 
         setInterval(updateDate, 60000);
-        </script>
-        
-        <!-- For the PWA -->
-        <!-- Service Worker Registration -->
-        <script>
-            if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('Service Worker registered!', reg))
-                .catch(err => console.error('Service Worker registration failed:', err));
-            });
-            }
         </script>
     </body>
 

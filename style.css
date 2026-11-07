@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #dde7df;
+  --card: #fbfaf7;
+  --card-border: #e8e6df;
+  --green-900: #24382b;
+  --green-600: #5f7d63;
+  --green-400: #86a86b;
+  --green-100: #e3ede4;
+  --peach-100: #f6e3d6;
+  --accent: #b5653a;
+  --text: #2b3a30;
+  --muted: #8a9a8d;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow: 0 10px 30px rgba(60, 90, 70, 0.12);
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(95, 125, 99, 0.12) 1px, transparent 0) 0 0 / 22px 22px,
+    linear-gradient(180deg, #eef3ee 0%, var(--bg) 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- App shell (outer .home) ---------- */
+body > .home {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  min-height: 830px;
+  background: var(--card);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* ---------- Sidebar ---------- */
+.side-bar {
+  flex: 0 0 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  background: #f6f5f0;
+  border-right: 1px solid var(--card-border);
+  color: var(--muted);
+  font-size: 0; /* hides the stray "=" text until you add icons */
+}
+
+.side-bar::before {
+  content: "";
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  background: var(--green-600);
+  box-shadow: 0 6px 14px rgba(95, 125, 99, 0.4);
+}
+
+/* Use these classes on your sidebar icon links later */
+.side-bar a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.side-bar a:hover,
+.side-bar a.active {
+  background: var(--green-100);
+  color: var(--green-600);
+}
+
+/* ---------- Main column (inner .home) ---------- */
+.side-bar + .home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 28px 24px;
+  min-width: 0;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#live-date {
+  margin-bottom: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.header h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--green-900);
+}
+
+.streak {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  background: #fffdf8;
+  border: 1px solid #efe3cf;
+  border-radius: 14px;
+}
+
+.streak p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Mind garden ---------- */
+.garden {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 290px;
+  padding: 18px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 85%, rgba(255, 255, 255, 0.55), transparent 70%),
+    linear-gradient(160deg, #eaf0ea 0%, #dfe9e0 100%);
+  overflow: hidden;
+}
+
+.garden > p {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-600);
+}
+
+/* Progress panel pinned to the bottom of the garden */
+.progress-bar {
+  margin-top: auto;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(6px);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* When you build a real bar, use this structure:
+   <div class="progress-track"><div class="progress-fill" style="width:68%"></div></div> */
+.progress-track {
+  height: 6px;
+  margin: 8px 0;
+  background: #e6e9e4;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-600), var(--green-400));
+  border-radius: inherit;
+  transition: width 0.6s ease;
+}
+
+/* ---------- Daily check-in ---------- */
+.feels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* Mood buttons (add later): <button class="mood">…</button> */
+.mood {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.65rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.mood:hover {
+  transform: translateY(-3px);
+  color: var(--green-600);
+}
+
+/* ---------- Quick care ---------- */
+.side-bar + .home > p {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.self_care {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.self_care h4 {
+  grid-column: 1 / -1;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--green-900);
+}
+
+.self_care a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Icon tile (rendered with ::before so no extra HTML is needed) */
+.self_care a::before {
+  content: "";
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--green-100);
+}
+
+.self_care a:nth-of-type(2)::before {
+  background: var(--peach-100);
+}
+
+.self_care a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(60, 90, 70, 0.12);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 520px) {
+  body {
+    padding: 0;
+  }
+
+  body > .home {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .side-bar {
+    flex-basis: 54px;
+  }
+
+  .side-bar + .home {
+    padding: 20px 16px;
+  }
+
+  .self_care {
+    grid-template-columns: 1fr;
+  }
+}
