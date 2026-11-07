@@ -103,7 +103,36 @@
                     id="journal-input"
                     placeholder="Write here... let your thoughts flow."
                 ></textarea>
+               <div class="voice-note">
+                <div class="voice-note-info">
+                    <div class="voice-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+                            <path d="M5 10v2a7 7 0 0 0 14 0v-2"></path>
+                            <path d="M12 19v3M8 22h8"></path>
+                        </svg>
+                    </div>
 
+                    <div>
+                        <strong>Voice note</strong>
+                        <p id="recording-status">Record your thoughts instead of typing.</p>
+                    </div>
+                </div>
+
+                <div class="voice-controls">
+                    <button type="button" id="record-btn">Start recording</button>
+                    <button type="button" id="stop-btn" disabled>Stop</button>
+                </div>
+
+                <audio id="voice-preview" controls hidden></audio>
+
+                <button type="button" id="save-voice-btn" disabled>
+                    Save voice note
+                </button>
+
+                <p id="voice-message"></p>
+                <div id="voice-library"></div>
+            </div>
                 <div class="journal-footer">
                     <span id="word-count">0 words</span>
 
@@ -284,5 +313,6 @@
         updateCount();
         updateSavedCount();
     </script>
+    <script src="voice.js"></script>
 </body>
 </html>
