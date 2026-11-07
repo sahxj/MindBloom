@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBloom · Music</title>
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+    <div class="home">
+
+        <!-- COPY the <div class="side-bar"> ... </div> from index.html and paste it here, replacing this line -->
+        <div class="side-bar"></div>
+
+        <div class="home">
+            <div class="music-header">
+                <span class="music-eyebrow">WHITE NOISE FOCUS</span>
+                <h2>Settle into your flow</h2>
+                <p>Real Spotify playlists for focus, rest, or quiet company.</p>
+            </div>
+
+            <div class="category-grid">
+                <button class="category selected" data-key="deep-focus">🎧 Deep Focus</button>
+                <button class="category" data-key="rain-sounds">🌧️ Rain Sounds</button>
+                <button class="category" data-key="ocean-waves">🌊 Ocean Waves</button>
+                <button class="category" data-key="classical">🎻 Classical Music</button>
+                <button class="category" data-key="lofi">☕ Lofi Beats</button>
+                <button class="category" data-key="find-your-own">🔍 Find your own</button>
+            </div>
+
+            <div id="find-own" class="find-own hidden">
+                <input id="own-input" type="text" placeholder="Paste a Spotify link here">
+                <button id="own-button">Load</button>
+            </div>
+            <span id="own-error" class="own-error"></span>
+
+            <div class="now-playing">
+                <strong id="now-title">Deep Focus</strong>
+                <a id="open-spotify" href="https://open.spotify.com" target="_blank" rel="noopener">Open in Spotify ↗</a>
+            </div>
+
+            <div class="spotify-box">
+                <iframe id="spotify-frame"
+                    width="100%" height="352" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+                <p id="no-playlist" class="no-playlist hidden"></p>
+            </div>
+
+            <p class="music-tip">Log in to Spotify in this browser to save songs from the player to your favorites.</p>
+        </div>
+    </div>
+
+    <script src="music.js"></script>
+</body>
+</html>
