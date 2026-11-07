@@ -1,9 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MindBloom</title>
+        
+        <!-- Link Manifest & Theme Color -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="style.css">
         <meta charset = "UTF-8">
         <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
         <meta name = "description" content="MindBloom">
-        <link rel = "stylesheet" href="style.css">
         <link rel = "icon" href = "favicon.svg">
     </head>
 
@@ -40,7 +48,7 @@
         </div>
 
 
-
+        <!--Time and Date Script-->
         <script>
         function updateDate() {
             const now = new Date();
@@ -60,5 +68,18 @@
 
         setInterval(updateDate, 60000);
         </script>
+        
+        <!-- For the PWA -->
+        <!-- Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('Service Worker registered!', reg))
+                .catch(err => console.error('Service Worker registration failed:', err));
+            });
+            }
+        </script>
     </body>
+
 </html>
