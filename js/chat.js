@@ -6,15 +6,20 @@ const chatFeed = document.getElementById("chat-feed");
 let conversation = [];
 let isWaiting = false;
 
+// Use the same image path as the HTML welcome message
+const SQUIRREL_IMAGE = "icons/squirrel.png";
+
 function addMessage(text, sender) {
     const row = document.createElement("div");
     row.className = `message-row ${sender}`;
 
     if (sender === "bot") {
         const squirrel = document.createElement("img");
-        squirrel.src = "squirrel.png";
+
+        squirrel.src = SQUIRREL_IMAGE;
         squirrel.alt = "Squirrel mascot";
         squirrel.className = "bot-squirrel";
+
         row.appendChild(squirrel);
     }
 
