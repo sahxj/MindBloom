@@ -57,6 +57,21 @@ function renderStats() {
 
 document.addEventListener('DOMContentLoaded', renderStats);
 
+function highlightToday() {
+    const names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const today = names[new Date().getDay()];
+
+    document.querySelectorAll(".chart-column").forEach(function (col) {
+        const bar = col.querySelector(".chart-bar");
+        const label = col.querySelector("small");
+        if (!bar || !label) return;
+
+        bar.classList.toggle("today-bar", label.textContent.trim() === today);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", highlightToday);
+
 //THIS FXN IS TO LINK THE FAKE DATA FROM mock_stats.json 
 // async function loadMockData() {
 //     try {
