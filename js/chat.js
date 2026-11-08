@@ -17,7 +17,7 @@ function addMessage(text, sender) {
         const squirrel = document.createElement("img");
 
         squirrel.src = SQUIRREL_IMAGE;
-        squirrel.alt = "Squirrel mascot";
+        squirrel.alt = "icons/squirrel.png";
         squirrel.className = "bot-squirrel";
 
         row.appendChild(squirrel);
