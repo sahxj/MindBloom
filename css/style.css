@@ -712,6 +712,7 @@ section {
         opacity: 0;
     }
 }
+<<<<<<< HEAD
 
 /* ACHIEVEMENT ICONS */
 
@@ -741,4 +742,15 @@ section {
     background: #f0eee8;
     color: #a5aaa2;
     opacity: 0.65;
+=======
+/* Profile Icon */
+.side-bar a[href="profile.html"] {
+  margin-top: auto;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+>>>>>>> 0c627c72a53d372871ceed80adbc5dbf681267f6
 }
