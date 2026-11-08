@@ -1,0 +1,27 @@
+{
+  "name": "mindbloom",
+  "version": "1.0.0",
+  "description": "A lightweight pop-up app for everyday emotional friction: the gap between doing nothing and seeking clinical help.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahxj/MindBloom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sahxj/MindBloom/issues"
+  },
+  "homepage": "https://github.com/sahxj/MindBloom#readme",
+  "dependencies": {
+    "@google/genai": "^3.0.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}
