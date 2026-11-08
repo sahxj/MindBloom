@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -8,7 +9,7 @@
     <meta name="description" content="MindBloom">
     <link rel="icon" href="favicon.svg">
 
-    <!--headers for PWA-->
+    <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#5b8a5f">
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
@@ -16,7 +17,6 @@
 
 <body>
     <div class="home">
-        <!-- BREATHING SCREEN (visible by default) -->
         <div id="breathing-screen" class="breathing-screen">
             <button id="breathing-back" class="breathing-back">← Back</button>
             <span class="breathing-eyebrow">ONE MINUTE RESET</span>
@@ -36,10 +36,9 @@
         </div>
     </div>
 
+    <!-- Load achievements BEFORE breathing -->
+    <script src="js/user_achievements.js"></script>
     <script src="js/breathing.js"></script>
     <script src="js/pwa.js"></script>
-    <!-- Load growth logic first so completeActivity() is defined -->
-    <script src="js/growth.js"></script>
-    <script src="js/breathing.js"></script>
 </body>
 </html>

@@ -250,6 +250,13 @@ body > .home {
   color: var(--green-600);
 }
 
+
+.mood.selected {
+    background: #e3ede4;
+    border: 2px solid #5f7d63;
+    color: #24382b;
+}
+
 /* ---------- Quick care ---------- */
 .side-bar + .home > p {
   margin-top: 4px;
@@ -768,4 +775,5 @@ section {
     border-radius: 0;   /* square corners so no background shows at the edges */
     box-shadow: none;
   }
+}
 }
