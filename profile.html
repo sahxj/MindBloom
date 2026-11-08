@@ -6,6 +6,7 @@
     <title>MindBloom · Profile</title>
     <link rel="icon" href="favicon.svg">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
 
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#5b8a5f">
@@ -101,9 +102,16 @@
             </a>
         </div>
 
-        <div class="home">
+        <div class="profile_content">
             <h2>Your profile</h2>
             <p>Private on this device.</p>
+            <!-- profile picture -->
+            <label for="avatarInput" class="avatar-wrap">
+                <img id="avatar" class="avatar" src="icons/default_profile.png" alt="Profile picture">
+            </label>
+            <input type="file" id="avatarInput" accept="image/*" hidden>
+
+            <!-- user chosen name -->
             <input id="profile-name" type="text" placeholder="What should we call you?"
                    style="padding: 11px 14px; border: 1px solid #e8e6df; border-radius: 12px; font: inherit;">
             <button id="profile-save"
@@ -115,10 +123,12 @@
                 <img src="squirrel.png" alt="Squirrel" class="squirrel-face">
                 <div id="squirrel-bubble" class="squirrel-bubble"></div>
             </div>
+
         </div>
     </div>
 
-    <script>
+    <script src="js/profile.js"></script>
+    <script>            
     const nameInput = document.getElementById("profile-name");
     const saveButton = document.getElementById("profile-save");
     const savedMessage = document.getElementById("profile-saved");

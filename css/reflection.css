@@ -1,5 +1,41 @@
-/* ---------- Journal page layout ---------- */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
 
+/* ---------- Design tokens (copied from style.css so this page stands alone) ---------- */
+:root {
+  --bg: #dde7df;
+  --card: #fbfaf7;
+  --card-border: #e8e6df;
+  --green-900: #24382b;
+  --green-600: #5f7d63;
+  --green-400: #86a86b;
+  --green-100: #e3ede4;
+  --peach-100: #f6e3d6;
+  --accent: #b5653a;
+  --text: #2b3a30;
+  --muted: #8a9a8d;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow: 0 10px 30px rgba(60, 90, 70, 0.12);
+}
+
+/* Use these classes on your sidebar icon links later */
+.side-bar a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.side-bar a:hover,
+.side-bar a.active {
+  background: var(--green-100);
+  color: var(--green-600);
+}
+
+/* ---------- Journal page layout ---------- */
 .side-bar + .home.journal-page {
     flex: 1;
     display: flex;

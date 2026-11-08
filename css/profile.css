@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+/* ---------- Design tokens (copied from style.css so this page stands alone) ---------- */
+:root {
+  --bg: #dde7df;
+  --card: #fbfaf7;
+  --card-border: #e8e6df;
+  --green-900: #24382b;
+  --green-600: #5f7d63;
+  --green-400: #86a86b;
+  --green-100: #e3ede4;
+  --peach-100: #f6e3d6;
+  --accent: #b5653a;
+  --text: #2b3a30;
+  --muted: #8a9a8d;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow: 0 10px 30px rgba(60, 90, 70, 0.12);
+}
+
+.avatar-wrap {
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+.profile_content h2 {
+  margin: 0;
+  color: var(--green-900);
+}
+
+.profile_content p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.profile_content input[type="text"] {
+  width: 100%;
+  max-width: 480px;
+}
