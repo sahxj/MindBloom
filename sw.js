@@ -8,7 +8,7 @@ const ASSETS = [
   '/favicon.svg', '/flower_icon.png', '/squirrel.png',
   '/icons/icon-192.png', '/icons/icon-512.png',
   '/js/chat.js', '/js/music.js', '/js/breathing.js',
-  '/js/voice.js', '/js/user_achievment.js'
+  '/js/voice.js', '/js/user_achievment.js', '/js/pwa.js'
 ];
 
 self.addEventListener('install', (e) => {
