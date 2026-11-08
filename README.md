@@ -26,7 +26,7 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 
 
 ## What We Learned
-- How to reference a Figma prototype into working project, and how JavaScript projects are structured
+- How to reference a prototype into working project, and how JavaScript projects are structured
 - How to connect and prompt an AI model for a sensitive use case
 - The small design choices, like the tree, a squirrel mascot, and a pop-up instead of a full app
 - Teamwork, communication skills, time management
