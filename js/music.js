@@ -1,12 +1,37 @@
 // Fill each playlist with a Spotify share link:
 // Spotify -> open a playlist -> ··· -> Share -> Copy link to playlist
+
 const categories = {
-  "deep-focus":    { title: "Deep Focus",      playlist: "", search: "deep focus" },
-  "rain-sounds":   { title: "Rain Sounds",     playlist: "", search: "rain sounds" },
-  "ocean-waves":   { title: "Ocean Waves",     playlist: "", search: "ocean waves" },
-  "classical":     { title: "Classical Music", playlist: "", search: "classical music" },
-  "lofi":          { title: "Lofi Beats",      playlist: "", search: "lofi beats" },
-  "find-your-own": { title: "Find your own",   playlist: "", search: "" },
+  "deep-focus": {
+    title: "Deep Focus",
+    playlist: "https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ",
+    search: "deep focus"
+  },
+  "rain-sounds": {
+    title: "Rain Sounds",
+    playlist: "https://open.spotify.com/playlist/37i9dQZF1DXbcPC6Vvqudd",
+    search: "rain sounds"
+  },
+  "ocean-waves": {
+    title: "Ocean Waves",
+    playlist: "https://open.spotify.com/playlist/37i9dQZF1DWV90ZWj21ygB",
+    search: "ocean waves"
+  },
+  "classical": {
+    title: "Classical Music",
+    playlist: "https://open.spotify.com/playlist/37i9dQZF1DWVFeEut75IAL",
+    search: "classical music"
+  },
+  "lofi": {
+    title: "Lofi Beats",
+    playlist: "https://open.spotify.com/playlist/37i9dQZF1DX9O8HCSWScgZ",
+    search: "lofi beats"
+  },
+  "find-your-own": {
+    title: "Find your own",
+    playlist: "",
+    search: ""
+  }
 };
 
 const buttons = document.querySelectorAll(".category");
