@@ -33,9 +33,9 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 
   
 ## Tech stack
-Next.js, React, Tailwind CSS, JaveScript, Gemini API
+Node.js, JavaScript, CSS, JavaScript, Gemini API
 
-We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We then exported the project as code using Next.js, React, and Tailwind CSS, and brought it into VS Code through GitHub. From there, we developed additional features and personalized the original design. These included Bloom the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
+We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We then exported the project as code using Node.js, JavaScript, and CSS, and brought it into VS Code through GitHub. From there, we developed additional features and personalized the original design. These included the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
 
 
 ## Future development
