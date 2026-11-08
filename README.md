@@ -14,7 +14,7 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 
 - 🌳 Growing tree (Sprout → Seedling → Sapling → Grown); each self-care activity earns a bucket of water; 3 self-care actions = next stage
 - 😊 Daily mood log: A quick daily check-in that tracks how you’re feeling over time.
-- 📓 Journal: A free-form diary and loggable voice messages.
+- 📓 Journal: Optional prompts, a free-form diary and loggable voice messages.
 - 🌬️ Guided breathing: An inhale/hold/exhale animation with calming text.
 - 🐿️ AI chat companion powered by Gemini: A cute squirrel chat that chats with you as a friend, gives affirmations, helps organize your thoughts, and suggests ways to feel better.
 
@@ -35,7 +35,7 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 ## Tech Stack
 Node.js, JavaScript, HTML & CSS, Gemini API
 
-We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We began writing code using Node.js, JavaScript, and CSS in VS Code, committing changes in GitHub. From there, we developed additional features and personalized the original design. These included Bloom the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
+We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We began writing code using Node.js, JavaScript, and CSS in VS Code, committing changes in GitHub. From there, we developed additional features and personalized the original design. These included the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
 
 
 ## Future Development
