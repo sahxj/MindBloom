@@ -1,0 +1,87 @@
+.achievements-section h4 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--green-900);
+}
+.achievements-section > p {
+  margin: 4px 0 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+#achievements-list {
+  display: grid;
+  gap: 8px;
+}
+.achievement {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+}
+.achievement.locked {
+  opacity: 0.45;
+}
+.achievement-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--green-100);
+}
+.achievement strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--green-900);
+}
+.achievement small {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* The pop-up when something unlocks */
+.achievement-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 10px 16px;
+  background: #fffffb;
+  border: 1px solid #e0e9dc;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(70, 91, 74, 0.2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #54675a;
+  white-space: nowrap;
+  animation: toast-in 0.35s ease both;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+
+.achievements-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+.achievements-header h2 {
+  margin-top: 6px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--green-900);
+}
+#water-count {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}

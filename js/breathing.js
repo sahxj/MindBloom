@@ -60,7 +60,7 @@ function finish() {
   bubble.style.transition = 'transform 1s ease-in-out';
   bubble.style.transform = 'scale(1)';
   pauseBtn.classList.add('hidden');
-  // TODO: give the tree 1 bucket of water here
+  recordAction("breaths");
 }
 
 function resetSession() {
