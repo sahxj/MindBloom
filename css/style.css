@@ -712,6 +712,35 @@ section {
         opacity: 0;
     }
 }
+/* ACHIEVEMENT ICONS */
+
+.achievement-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: #e3ede4;
+    color: #5f7d63;
+}
+
+.achievement-icon svg {
+    width: 27px;
+    height: 27px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.achievement.locked .achievement-icon {
+    background: #f0eee8;
+    color: #a5aaa2;
+    opacity: 0.65;
+
 /* Profile Icon */
 .side-bar a[href="profile.html"] {
   margin-top: auto;
