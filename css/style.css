@@ -722,3 +722,21 @@ section {
   flex-direction: column;
   align-self: stretch;
 }
+
+@media (display-mode: standalone) {
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #fcfaf5; /* match your card color */
+  }
+  .home {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;   /* square corners so no background shows at the edges */
+    box-shadow: none;
+  }
+}
