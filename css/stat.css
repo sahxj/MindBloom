@@ -1,0 +1,271 @@
+/* =========================
+   STATS PAGE
+========================= */
+
+.stats-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.stats-eyebrow {
+    color: var(--green-600);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.stats-header h2 {
+    color: var(--green-900);
+    font-size: 30px;
+    margin: 8px 0;
+}
+
+.stats-header p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.stats-date {
+    background: var(--green-100);
+    color: var(--green-600);
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Summary cards */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.summary-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.summary-card span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.summary-card strong {
+    color: var(--green-900);
+    font-size: 32px;
+}
+
+.summary-card small {
+    color: var(--green-600);
+    font-size: 12px;
+}
+
+/* Activity chart */
+
+.chart-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+}
+
+.chart-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.chart-title span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.chart-title h3 {
+    color: var(--green-900);
+    margin: 6px 0 0;
+    font-size: 19px;
+}
+
+.chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.chart-legend i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green-400);
+}
+
+.stats-chart {
+    height: 190px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 25px;
+    padding: 0 5px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.chart-column {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.chart-bar {
+    width: 65%;
+    max-width: 38px;
+    min-height: 8px;
+    background: #c5d8c1;
+    border-radius: 12px 12px 4px 4px;
+    transition: height 0.3s ease;
+}
+
+.chart-bar.today-bar {
+    background: var(--green-600);
+}
+
+.chart-column small {
+    color: var(--muted);
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+/* Gentle insight */
+
+.stats-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--green-100);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+}
+
+.insight-icon {
+    background: var(--card);
+    color: var(--green-600);
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+}
+
+.stats-insight span {
+    color: var(--green-600);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.stats-insight h3 {
+    color: var(--green-900);
+    font-size: 17px;
+    margin: 7px 0;
+}
+
+.stats-insight p {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+    .stats-page {
+        padding: 22px;
+    }
+
+    .stats-header h2 {
+        font-size: 23px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .summary-card {
+        padding: 16px;
+    }
+
+    .summary-card strong {
+        font-size: 26px;
+    }
+
+    .chart-card {
+        padding: 18px;
+    }
+
+    .stats-chart {
+        gap: 8px;
+    }
+}
+/* Smaller stats page layout */
+.stats-page {
+    font-size: 14px;
+    gap: 14px;
+}
+
+.stats-page h1 {
+    font-size: 26px;
+}
+
+.stats-page h2 {
+    font-size: 20px;
+}
+
+.stats-page h3 {
+    font-size: 17px;
+}
+
+.stats-page h4 {
+    font-size: 14px;
+}
+
+.stats-page p,
+.stats-page span {
+    font-size: 13px;
+}
+
+.stats-page .card,
+.stats-page .stat-card {
+    padding: 16px;
+    border-radius: 18px;
+}
+
+.stats-page button {
+    font-size: 13px;
+}
