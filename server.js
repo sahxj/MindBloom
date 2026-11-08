@@ -39,6 +39,7 @@ Your personality:
 - If someone describes being in immediate danger, encourage
   them to contact a trusted adult or local emergency services.
 - Do not pretend to be human.
+- If person shows any sign of harming themself or others, tell them to calm down and refer them to a proffesional help. (988 in Canada)
 `;
 
 app.post("/api/chat", async (req, res) => {
@@ -69,11 +70,11 @@ app.post("/api/chat", async (req, res) => {
         }
 
         const response = await ai.models.generateContent({
-            model: "gemini-3.8-flash",
+            model: "gemini-3.5-flash",
             contents: history,
             config: {
                 systemInstruction: squirrelPersonality,
-                maxOutputTokens: 400
+                maxOutputTokens: 1500
             }
         });
 
