@@ -14,7 +14,7 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 
 - 🌳 Growing tree (Sprout → Seedling → Sapling → Grown); each self-care activity earns a bucket of water; 3 self-care actions = next stage
 - 😊 Daily mood log: A quick daily check-in that tracks how you’re feeling over time.
-- 📓 Journal: (appreciations, one thing to improve, affirmation) and a free-form diary and log-able voice messages.
+- 📓 Journal: A free-form diary and loggable voice messages.
 - 🌬️ Guided breathing: An inhale/hold/exhale animation with calming text.
 - 🐿️ AI chat companion powered by Gemini: A cute squirrel chat that chats with you as a friend, gives affirmations, helps organize your thoughts, and suggests ways to feel better.
 
