@@ -250,6 +250,13 @@ body > .home {
   color: var(--green-600);
 }
 
+
+.mood.selected {
+    background: #e3ede4;
+    border: 2px solid #5f7d63;
+    color: #24382b;
+}
+
 /* ---------- Quick care ---------- */
 .side-bar + .home > p {
   margin-top: 4px;
@@ -741,7 +748,6 @@ section {
     color: #a5aaa2;
     opacity: 0.65;
 }
-
 /* Profile Icon */
 .side-bar a[href="profile.html"] {
   margin-top: auto;

@@ -62,14 +62,13 @@
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
             </a>
-            
+
             <a href="profile.html" class="bottom-icon" title="Profile" aria-label="Profile">
                 <svg viewBox="0 0 24 24">
                     <circle cx="12" cy="8" r="4"></circle>
                     <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
                 </svg>
             </a>
-
         </div>
 
         <!-- MAIN PANEL -->
@@ -207,16 +206,15 @@
                             <path d="M96 191h68" stroke="#bb7658" stroke-width="2" opacity=".35"/>
                         </g>
                     </svg>
-                    
-                <!-- WATERING ANIMATION -->
-                <div id="watering-animation" class="watering-animation">
-                    <div class="pouring-water">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
 
+                    <!-- WATERING ANIMATION -->
+                    <div id="watering-animation" class="watering-animation">
+                        <div class="pouring-water">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="progress-bar">
@@ -226,7 +224,7 @@
 
             <!-- MOOD CHECK-IN -->
             <div class="feels">
-                <button class="mood">
+                <button class="mood" type="button">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M9 9h.01M15 9h.01"/>
@@ -235,7 +233,7 @@
                     Low
                 </button>
 
-                <button class="mood">
+                <button class="mood" type="button">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M9 9h.01M15 9h.01"/>
@@ -244,7 +242,7 @@
                     Meh
                 </button>
 
-                <button class="mood">
+                <button class="mood" type="button">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M9 9h.01M15 9h.01"/>
@@ -253,7 +251,7 @@
                     Okay
                 </button>
 
-                <button class="mood">
+                <button class="mood" type="button">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M9 9h.01M15 9h.01"/>
@@ -262,7 +260,7 @@
                     Good
                 </button>
 
-                <button class="mood">
+                <button class="mood" type="button">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M9 9h.01M15 9h.01"/>
@@ -307,38 +305,57 @@
         </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- ACHIEVEMENTS SCRIPT -->
+    <script src="js/user_achievements.js"></script>
+
+    <!-- HOMEPAGE SCRIPT -->
     <script>
+        
         // =================================
         // MOOD SELECTION
         // =================================
 
         const moodButtons = document.querySelectorAll(".mood");
 
+        function restoreSavedMood() {
+            const savedMood = localStorage.getItem("savedMood");
+
+            moodButtons.forEach(button => {
+                const moodName = button.textContent.trim();
+
+                button.classList.toggle(
+                    "selected",
+                    moodName === savedMood
+                );
+            });
+        }
+
         moodButtons.forEach(button => {
             button.addEventListener("click", () => {
                 const selectedMood = button.textContent.trim();
 
+                // SAVE MOOD
                 localStorage.setItem("savedMood", selectedMood);
 
+                // UPDATE BUTTON APPEARANCE
                 moodButtons.forEach(mood => {
                     mood.classList.remove("selected");
                 });
 
                 button.classList.add("selected");
+
+                // UPDATE ACHIEVEMENT
+                if (typeof recordAction === "function") {
+                    recordAction("moods");
+                }
+
+                console.log("Mood saved:", selectedMood);
             });
         });
 
-        // RESTORE SAVED MOOD
-        const savedMood = localStorage.getItem("savedMood");
+        // RESTORE MOOD WHEN PAGE LOADS
+        restoreSavedMood();
 
-        if (savedMood) {
-            moodButtons.forEach(button => {
-                if (button.textContent.trim() === savedMood) {
-                    button.classList.add("selected");
-                }
-            });
-        }
 
         // =================================
         // DATE
@@ -384,14 +401,12 @@
         // BUCKET & TREE GROWTH SYSTEM
         // =================================
 
-        const STORAGE_KEY = 'mindbloom_buckets_logged';
+        const BUCKET_STORAGE_KEY = 'mindbloom_buckets_logged';
 
-        // GET TOTAL LOGGED BUCKETS
         function getLoggedBuckets() {
-            return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+            return parseInt(localStorage.getItem(BUCKET_STORAGE_KEY) || '0', 10);
         }
 
-        // GET TREE STAGE
         function getStageFromBuckets(buckets) {
             if (buckets >= 9) return 4;
             if (buckets >= 6) return 3;
@@ -403,7 +418,6 @@
         // WATER ANIMATION
         // =================================
 
-        
         function playWaterAnimation() {
             const animation = document.getElementById('watering-animation');
 
@@ -413,18 +427,13 @@
             }
 
             animation.classList.remove('active');
-
-            // Restart animation
             void animation.offsetWidth;
-
             animation.classList.add('active');
 
             setTimeout(() => {
                 animation.classList.remove('active');
             }, 2600);
-            
         }
-
 
         // =================================
         // UPDATE GARDEN UI
@@ -434,7 +443,6 @@
             const buckets = getLoggedBuckets();
             const currentStage = getStageFromBuckets(buckets);
 
-            // Update active tree stage
             document.querySelectorAll('.tree-stage').forEach(el => {
                 el.classList.remove('active');
             });
@@ -447,7 +455,6 @@
                 activeStageGroup.classList.add('active');
             }
 
-            // Update progress text
             const progressTextEl = document.querySelector('.progress-bar p');
 
             if (progressTextEl) {
@@ -466,21 +473,15 @@
         function completeActivity() {
             const buckets = getLoggedBuckets();
             const oldStage = getStageFromBuckets(buckets);
-
-            // Add one bucket
             const newBuckets = buckets + 1;
 
-            localStorage.setItem(STORAGE_KEY, newBuckets);
+            localStorage.setItem(BUCKET_STORAGE_KEY, newBuckets);
 
             const newStage = getStageFromBuckets(newBuckets);
 
-            // Play watering animation
             playWaterAnimation();
-
-            // Update tree and progress
             updateGardenUI();
 
-            // Stage-up message
             if (newStage > oldStage) {
                 console.log(`Congratulations! Your tree grew to Stage ${newStage}!`);
             }
@@ -490,14 +491,12 @@
         // INITIALIZE PAGE
         // =================================
 
-        
         updateDate();
         setInterval(updateDate, 60000);
 
-        // Update tree growth first
         updateGardenUI();
 
-        // Play water animation after returning from an activity
+        // PLAY WATER ANIMATION AFTER RETURNING HOME
         if (localStorage.getItem('showWaterDrops') === 'true') {
             playWaterAnimation();
             localStorage.removeItem('showWaterDrops');

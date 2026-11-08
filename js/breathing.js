@@ -68,9 +68,8 @@ function finish() {
 
     // Save breathing activity
     if (typeof recordAction === 'function') {
-        recordAction("breaths");
+      recordAction("breaths");
     }
-
     // Increase tree growth ONCE
     let buckets = parseInt(
         localStorage.getItem('mindbloom_buckets_logged') || '0',
