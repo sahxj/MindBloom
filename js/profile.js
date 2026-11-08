@@ -5,6 +5,9 @@ const squirrel = document.getElementById("squirrel");
 const squirrelBubble = document.getElementById("squirrel-bubble");
 const avatar = document.getElementById("avatar");
 const avatarInput = document.getElementById("avatarInput");
+const avatarReset = document.getElementById("avatarReset");
+
+const DEFAULT_AVATAR = "icons/pic.png";
 
 // ----- name -----
 nameInput.value = localStorage.getItem("mindbloom-name") || "";
@@ -33,7 +36,12 @@ nameInput.addEventListener("keydown", function (event) {
 });
 
 // ----- profile picture -----
-avatar.src = localStorage.getItem("avatar") || "icons/default_profile.png";
+function updateResetButton() {
+  avatarReset.hidden = !localStorage.getItem("avatar");
+}
+
+avatar.src = localStorage.getItem("avatar") || DEFAULT_AVATAR;
+updateResetButton();
 
 avatarInput.addEventListener("change", function () {
   const file = avatarInput.files[0];
@@ -57,8 +65,17 @@ avatarInput.addEventListener("change", function () {
       const dataUrl = canvas.toDataURL("image/png");
       localStorage.setItem("avatar", dataUrl);
       avatar.src = dataUrl;
+      updateResetButton();
     };
     img.src = reader.result;
   };
   reader.readAsDataURL(file);
+});
+
+// ----- remove photo (outside the change handler) -----
+avatarReset.addEventListener("click", function () {
+  localStorage.removeItem("avatar");
+  avatar.src = DEFAULT_AVATAR;
+  avatarInput.value = "";
+  updateResetButton();
 });

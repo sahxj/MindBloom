@@ -57,3 +57,18 @@
   width: 100%;
   max-width: 480px;
 }
+
+.avatar-reset {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.avatar-reset:hover {
+  color: var(--green-900);
+}
