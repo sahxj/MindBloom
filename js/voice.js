@@ -199,6 +199,43 @@ saveVoiceBtn.addEventListener("click", async () => {
 
         localStorage.setItem("journalEntries", JSON.stringify(entries));
 
+        // UPDATE JOURNAL STATS
+        const progressData = JSON.parse(
+            localStorage.getItem("mindbloom-progress") || "{}"
+        );
+
+        if (!progressData.stats) {
+            progressData.stats = {
+                breaths: 0,
+                journals: 0,
+                moods: 0,
+                music: 0
+            };
+        }
+
+        progressData.stats.journals = (progressData.stats.journals || 0) + 1;
+
+        localStorage.setItem(
+            "mindbloom-progress",
+            JSON.stringify(progressData)
+        );
+
+        // WATER THE TREE
+        let buckets = parseInt(
+            localStorage.getItem("mindbloom_buckets_logged") || "0",
+            10
+        );
+
+        buckets += 1;
+
+        localStorage.setItem("mindbloom_buckets_logged", buckets);
+        localStorage.setItem("showWaterDrops", "true");
+
+        // UPDATE ACHIEVEMENTS
+        if (typeof checkAchievements === "function") {
+            checkAchievements();
+        }
+
         // Update the saved reflections count
         updateSavedCount();
 
