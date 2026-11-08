@@ -777,3 +777,7 @@ section {
     flex: none;
   }
 }
+html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
