@@ -612,3 +612,15 @@ section {
     color: var(--text);
     transition: 0.2s ease;
 }
+
+/* Stage Visibility Control */
+.tree-stage {
+    display: none;
+    transform-origin: 130px 185px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tree-stage.active {
+    display: block;
+    animation: tree-grow 0.8s ease-out;
+}
