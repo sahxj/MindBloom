@@ -35,9 +35,6 @@ body {
   align-items: flex-start;
   font-family: "DM Sans", system-ui, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 1px 1px, rgba(95, 125, 99, 0.12) 1px, transparent 0) 0 0 / 22px 22px,
-    linear-gradient(180deg, #eef3ee 0%, var(--bg) 100%);
 }
 
 a {
@@ -331,6 +328,19 @@ body > .home {
   .self_care {
     grid-template-columns: 1fr;
   }
+
+  .header input {
+        width: 140px;
+    }
+
+    .header button {
+        margin-top: 8px;
+        margin-left: 0;
+    }
+
+    .header h3 {
+        font-size: 1.0rem;
+    }
 }
 
 /* ---------- Tree naming ---------- */
@@ -412,23 +422,6 @@ body > .home {
 
 .mood:hover {
     background: var(--green-100);
-}
-
-/* ---------- Mobile adjustments ---------- */
-
-@media (max-width: 520px) {
-    .header input {
-        width: 140px;
-    }
-
-    .header button {
-        margin-top: 8px;
-        margin-left: 0;
-    }
-
-    .header h3 {
-        font-size: 1.0rem;
-    }
 }
 
 /* ---------- Consistent SVG icon styling ---------- */
