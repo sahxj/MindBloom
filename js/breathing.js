@@ -51,26 +51,39 @@ function startSession() {
   pauseBtn.classList.remove('hidden');
 }
 
+
+
 function finish() {
-  clearInterval(timer);
-  timer = null;
-  started = false;
-  bubbleTitle.textContent = 'Well done';
-  bubbleSub.textContent = 'Tap to go again';
-  bubble.style.transition = 'transform 1s ease-in-out';
-  bubble.style.transform = 'scale(1)';
-  pauseBtn.classList.add('hidden');
-  recordAction("breaths");
-  // TODO: give the tree 1 bucket of water here
-  // Increment bucket count & update local storage
-  if (typeof completeActivity === 'function') {
-    completeActivity();
-  } else {
-    // Fallback if growth.js isn't loaded
-    let buckets = parseInt(localStorage.getItem('mindbloom_buckets_logged') || '0', 10);
+    clearInterval(timer);
+    timer = null;
+    started = false;
+
+    bubbleTitle.textContent = 'Well done';
+    bubbleSub.textContent = 'Tap to go again';
+
+    bubble.style.transition = 'transform 1s ease-in-out';
+    bubble.style.transform = 'scale(1)';
+
+    pauseBtn.classList.add('hidden');
+
+    // Save breathing activity
+    if (typeof recordAction === 'function') {
+        recordAction("breaths");
+    }
+
+    // Increase tree growth ONCE
+    let buckets = parseInt(
+        localStorage.getItem('mindbloom_buckets_logged') || '0',
+        10
+    );
+
     localStorage.setItem('mindbloom_buckets_logged', buckets + 1);
+
+    // Request water animation on homepage
+    localStorage.setItem('showWaterDrops', 'true');
 }
-}
+
+
 
 function resetSession() {
   clearInterval(timer);

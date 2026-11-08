@@ -624,3 +624,91 @@ section {
     display: block;
     animation: tree-grow 0.8s ease-out;
 }
+
+
+/* WATER DROPLET ANIMATION */
+.tree-wrap {
+    position: relative;
+}
+
+.watering-animation {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 150px;
+    height: 180px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.watering-animation.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Water droplet container */
+.pouring-water {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 150px;
+    height: 170px;
+    transform: translateX(-50%);
+}
+
+/* Individual droplets */
+.pouring-water span {
+    position: absolute;
+    width: 7px;
+    height: 11px;
+    border-radius: 50%;
+    background: #83c9d8;
+    opacity: 0;
+}
+
+/* Scattered droplet positions */
+.pouring-water span:nth-child(1)  { left: 15px; top: 5px; }
+.pouring-water span:nth-child(2)  { left: 55px; top: 30px; }
+.pouring-water span:nth-child(3)  { left: 100px; top: 10px; }
+.pouring-water span:nth-child(4)  { left: 35px; top: 55px; }
+.pouring-water span:nth-child(5)  { left: 125px; top: 40px; }
+.pouring-water span:nth-child(6)  { left: 75px; top: 70px; }
+.pouring-water span:nth-child(7)  { left: 5px; top: 85px; }
+.pouring-water span:nth-child(8)  { left: 90px; top: 95px; }
+.pouring-water span:nth-child(9)  { left: 45px; top: 115px; }
+.pouring-water span:nth-child(10) { left: 115px; top: 125px; }
+.pouring-water span:nth-child(11) { left: 65px; top: 140px; }
+.pouring-water span:nth-child(12) { left: 25px; top: 150px; }
+
+/* Animate droplets */
+.watering-animation.active .pouring-water span {
+    animation: fallingWater 1s ease-in infinite;
+}
+
+.pouring-water span:nth-child(odd) {
+    animation-delay: .3s;
+}
+
+.pouring-water span:nth-child(even) {
+    animation-delay: .7s;
+}
+
+/* Falling motion */
+@keyframes fallingWater {
+    0% {
+        transform: translateY(-20px) scale(.8);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(35px) scale(1);
+        opacity: 0;
+    }
+}

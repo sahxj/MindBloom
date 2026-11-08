@@ -1,68 +1,93 @@
-// Keys & State Config
+
+// KEYS & STATE CONFIG
 const STORAGE_KEY = 'mindbloom_buckets_logged';
 
-// Bucket Milestones: 
-// 0–2 buckets = Stage 1 (Sprout)
-// 3–5 buckets = Stage 2 (Sapling)
-// 6–8 buckets = Stage 3 (Small Tree)
-// 9+ buckets = Stage 4 (Full Bloom)
-function getStageFromBuckets(buckets) {
-  if (buckets >= 9) return 4;
-  if (buckets >= 6) return 3;
-  if (buckets >= 3) return 2;
-  return 1;
-}
-
-// Get total logged buckets
+// GET TOTAL LOGGED BUCKETS
 function getLoggedBuckets() {
-  return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
 }
 
-// Update UI (Tree Stage + Progress Text)
+// GET TREE STAGE
+function getStageFromBuckets(buckets) {
+    if (buckets >= 9) return 4;
+    if (buckets >= 6) return 3;
+    if (buckets >= 3) return 2;
+    return 1;
+}
+
+// WATER ANIMATION
+function playWaterAnimation() {
+    const animation = document.getElementById('watering-animation');
+
+    if (!animation) return;
+
+    // Reset animation
+    animation.classList.remove('active');
+    void animation.offsetWidth;
+
+    // Start pouring
+    animation.classList.add('active');
+
+    // Hide animation after it finishes
+    setTimeout(() => {
+        animation.classList.remove('active');
+    }, 2600);
+}
+
+// UPDATE TREE AND PROGRESS
 function updateGardenUI() {
-  const buckets = getLoggedBuckets();
-  const currentStage = getStageFromBuckets(buckets);
+    const buckets = getLoggedBuckets();
+    const currentStage = getStageFromBuckets(buckets);
 
-  // 1. Update SVG Active Stage
-  document.querySelectorAll('.tree-stage').forEach((el) => {
-    el.classList.remove('active');
-  });
+    // Update active tree stage
+    document.querySelectorAll('.tree-stage').forEach(el => {
+        el.classList.remove('active');
+    });
 
-  const activeStageGroup = document.getElementById(`tree-stage-${currentStage}`);
-  if (activeStageGroup) {
-    activeStageGroup.classList.add('active');
-  }
+    const activeStageGroup = document.getElementById(
+        `tree-stage-${currentStage}`
+    );
 
-  // 2. Update Progress Bar Text
-  const progressTextEl = document.querySelector('.progress-bar p');
-  if (progressTextEl) {
-    const bucketsInCurrentStage = currentStage === 4 ? 3 : buckets % 3;
-    progressTextEl.textContent = `Tree growth: ${bucketsInCurrentStage} / 3 buckets completed (Stage ${currentStage} of 4)`;
-  }
+    if (activeStageGroup) {
+        activeStageGroup.classList.add('active');
+    }
+
+    // Update progress text
+    const progressTextEl = document.querySelector('.progress-bar p');
+
+    if (progressTextEl) {
+        const bucketsInCurrentStage =
+            currentStage === 4 ? 3 : buckets % 3;
+
+        progressTextEl.textContent =
+            `Tree growth: ${bucketsInCurrentStage} / 3 buckets completed (Stage ${currentStage} of 4)`;
+    }
 }
 
-/**
- * Call this function whenever an activity (Breathe, Reflection, Mood Log) is completed!
- */
+// COMPLETE ACTIVITY
 function completeActivity() {
-  let buckets = getLoggedBuckets();
-  const oldStage = getStageFromBuckets(buckets);
+    const buckets = getLoggedBuckets();
+    const oldStage = getStageFromBuckets(buckets);
 
-  buckets += 1;
-  localStorage.setItem(STORAGE_KEY, buckets);
+    // Add one bucket
+    const newBuckets = buckets + 1;
+    localStorage.setItem(STORAGE_KEY, newBuckets);
 
-  const newStage = getStageFromBuckets(buckets);
+    const newStage = getStageFromBuckets(newBuckets);
 
-  // Trigger UI Update
-  updateGardenUI();
+    // Play watering animation
+    playWaterAnimation();
 
-  // Optional: Trigger celebration / alert on stage progression
-  if (newStage > oldStage) {
-    console.log(`🎉 Congratulations! Your tree grew to Stage ${newStage}!`);
-  }
+    // Update tree and progress
+    updateGardenUI();
+
+    // Stage-up celebration
+    if (newStage > oldStage) {
+        console.log(`Your tree grew to Stage ${newStage}!`);
+    }
 }
 
-// Initialize on page load
+// INITIALIZE GARDEN
 document.addEventListener('DOMContentLoaded', () => {
-  updateGardenUI();
+    updateGardenUI();
 });
