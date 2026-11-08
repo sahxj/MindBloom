@@ -117,48 +117,6 @@
             </div>
             </div>
         </div>
-
-        <!-- Chat Script -->
-        <!-- <script>
-            const chatInput = document.getElementById('chat-input');
-            const sendBtn = document.getElementById('send-btn');
-            const chatFeed = document.getElementById('chat-feed');
-
-            function handleSendMessage() {
-                const message = chatInput.value.trim();
-                if (!message) return;
-
-                // Add User Message Bubble
-                const userRow = document.createElement('div');
-                userRow.className = 'message-row user';
-                userRow.innerHTML = `<div class="bubble user-bubble">${escapeHtml(message)}</div>`;
-                chatFeed.appendChild(userRow);
-
-                chatInput.value = '';
-                chatFeed.scrollTop = chatFeed.scrollHeight;
-
-                // Simulated AI Response (Hook your backend/API here)
-                setTimeout(() => {
-                    const botRow = document.createElement('div');
-                    botRow.className = 'message-row bot';
-                    botRow.innerHTML = `<div class="bubble bot-bubble">Thank you for sharing that with me. How does carrying that feel right now?</div>`;
-                    chatFeed.appendChild(botRow);
-                    chatFeed.scrollTop = chatFeed.scrollHeight;
-                }, 1000);
-            }
-
-            function escapeHtml(text) {
-                const div = document.createElement('div');
-                div.innerText = text;
-                return div.innerHTML;
-            }
-
-            sendBtn.addEventListener('click', handleSendMessage);
-            chatInput.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    handleSendMessage();
-                }
-            });
-        </script> --> <script src="chat.js"></script>
+        <script src="chat.js"></script>
     </body>
 </html>
