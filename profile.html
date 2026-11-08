@@ -94,7 +94,7 @@
                 </svg>
             </a>
 
-            <a href="profile.html" class="active" class="bottom-icon" title="Profile" aria-label="Profile">
+            <a href="profile.html" class="bottom-icon" title="Profile" aria-label="Profile">
                 <svg viewBox="0 0 24 24">
                     <circle cx="12" cy="8" r="4"></circle>
                     <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
@@ -110,6 +110,9 @@
                 <img id="avatar" class="avatar" src="icons/pic.png" alt="Profile picture">
             </label>
             <input type="file" id="avatarInput" accept="image/*" hidden>
+
+            <!-- Remove Photo-->
+            <button type="button" id="avatarReset" class="avatar-reset">Remove photo</button>
 
             <!-- user chosen name -->
             <input id="profile-name" type="text" placeholder="What should we call you?"
@@ -128,38 +131,6 @@
     </div>
 
     <script src="js/profile.js"></script>
-    <script>            
-    const nameInput = document.getElementById("profile-name");
-    const saveButton = document.getElementById("profile-save");
-    const savedMessage = document.getElementById("profile-saved");
-    const squirrel = document.getElementById("squirrel");
-    const squirrelBubble = document.getElementById("squirrel-bubble");
-
-    // Show the saved name in the box when the page opens
-    nameInput.value = localStorage.getItem("mindbloom-name") || "";
-
-    function squirrelSays(text) {
-        squirrelBubble.textContent = text;
-        squirrel.classList.remove("hidden");
-    }
-
-    function saveName() {
-        const name = nameInput.value.trim();
-        localStorage.setItem("mindbloom-name", name);
-        savedMessage.textContent = "Saved ✓";
-
-        if (name !== "") {
-            squirrelSays("Hi, " + name + "! 🌰 Nice to meet you.");
-        }
-    }
-
-    saveButton.addEventListener("click", saveName);
-
-    nameInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            saveName();
-        }
-    });
-    </script>
+   
 </body>
 </html>
