@@ -747,6 +747,15 @@ section {
     color: #a5aaa2;
     opacity: 0.65;
 }
+.achievement-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 300px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+}
 /* Profile Icon */
 .side-bar a[href="profile.html"] {
   margin-top: auto;
@@ -779,4 +788,20 @@ section {
 html {
     overflow-y: scroll;
     scrollbar-gutter: stable;
+}
+/* Prevent tree growth from shifting the page */
+.tree-wrap {
+    height: 220px;
+    min-height: 220px;
+    flex: 0 0 220px;
+}
+
+.tree {
+    width: 260px;
+    height: 220px;
+    flex-shrink: 0;
+}
+
+.tree-stage {
+    transform-box: view-box;
 }
