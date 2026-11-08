@@ -314,9 +314,8 @@
             document.getElementById("save-message").textContent =
                 "Your reflection has been saved 🌱";
         });
-
-        // DISPLAY SAVED REFLECTIONS
-        function displayEntries() {
+       
+        async function displayEntries() {
             const entries = getEntries();
 
             library.innerHTML = "";
@@ -331,23 +330,44 @@
                 return;
             }
 
-            entries.forEach(entry => {
+            for (const entry of entries) {
                 const card = document.createElement("article");
                 card.className = "journal-entry";
 
                 const date = document.createElement("small");
                 date.textContent = entry.date;
-
-                const content = document.createElement("p");
-                content.textContent = entry.text;
-
                 card.appendChild(date);
-                card.appendChild(content);
+
+                if (entry.text) {
+                    const content = document.createElement("p");
+                    content.textContent = entry.text;
+                    card.appendChild(content);
+                }
+
+                if (entry.audioId !== undefined) {
+                    const audio = document.createElement("audio");
+                    audio.controls = true;
+                    audio.textContent = "Your browser does not support audio playback.";
+
+                    try {
+                        const blob = await getVoiceNoteBlob(entry.audioId);
+
+                        if (blob) {
+                            audio.src = URL.createObjectURL(blob);
+                        } else {
+                            audio.textContent = "Recording could not be found.";
+                        }
+                    } catch (error) {
+                        console.error("Could not load voice note:", error);
+                        audio.textContent = "Could not load this recording.";
+                    }
+
+                    card.appendChild(audio);
+                }
 
                 library.appendChild(card);
-            });
+            }
         }
-
         updateCount();
         updateSavedCount();
     </script>
