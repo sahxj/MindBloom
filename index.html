@@ -76,79 +76,113 @@
                     <h3 id="tree-display">Your garden is waiting to grow!</h3>
                     <p>Every small step helps your tree grow. Take care of yourself and watch your garden bloom.</p>
                     <div class="tree-wrap">
-                    <span class="tree-spark spark-one"></span>
-                    <span class="tree-spark spark-two"></span>
+                        <span class="tree-spark spark-one"></span>
+                        <span class="tree-spark spark-two"></span>
 
-                    <svg class="tree" viewBox="0 0 260 240"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-label="Your growing tree">
+                        <svg class="tree" viewBox="0 0 260 240"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Your growing tree">
 
-                        <defs>
-                            <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1">
-                                <stop stop-color="#e6b99a"/>
-                                <stop offset="1" stop-color="#c98260"/>
-                            </linearGradient>
+                            <defs>
+                                <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1">
+                                    <stop stop-color="#e6b99a"/>
+                                    <stop offset="1" stop-color="#c98260"/>
+                                </linearGradient>
 
-                            <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
-                                <stop stop-color="#7d5840"/>
-                                <stop offset=".5" stop-color="#a77652"/>
-                                <stop offset="1" stop-color="#6d4b39"/>
-                            </linearGradient>
+                                <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+                                    <stop stop-color="#7d5840"/>
+                                    <stop offset=".5" stop-color="#a77652"/>
+                                    <stop offset="1" stop-color="#6d4b39"/>
+                                </linearGradient>
 
-                            <radialGradient id="leaf" cx=".35" cy=".3">
-                                <stop stop-color="#a9cf87"/>
-                                <stop offset="1" stop-color="#5d8c64"/>
-                            </radialGradient>
+                                <radialGradient id="leaf" cx=".35" cy=".3">
+                                    <stop stop-color="#a9cf87"/>
+                                    <stop offset="1" stop-color="#5d8c64"/>
+                                </radialGradient>
 
-                            <filter id="shadow">
-                                <feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".12"/>
-                            </filter>
-                        </defs>
+                                <filter id="shadow">
+                                    <feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".12"/>
+                                </filter>
+                            </defs>
 
-                        <ellipse cx="130" cy="220" rx="62" ry="10"
-                                fill="#425642" opacity=".1"/>
+                            <ellipse cx="130" cy="220" rx="62" ry="10" fill="#425642" opacity=".1"/>
 
-                        <!-- Tree trunk and branches -->
-                        <g class="tree-growth">
-                            <path
-                                d="M128 185c-2-42 2-79-7-114M129 147c19-20 31-42 36-65M125 128c-18-13-30-28-37-45M129 109c10-20 12-38 10-54"
-                                stroke="url(#trunk)"
-                                stroke-width="11"
-                                stroke-linecap="round"
-                                fill="none"
-                            />
-
-                            <!-- Leaves -->
-                            <g fill="url(#leaf)" filter="url(#shadow)">
-                                <circle cx="76" cy="75" r="28"/>
-                                <circle cx="101" cy="52" r="31"/>
-                                <circle cx="135" cy="47" r="34"/>
-                                <circle cx="169" cy="65" r="32"/>
-                                <circle cx="187" cy="92" r="26"/>
-                                <circle cx="155" cy="96" r="37"/>
-                                <circle cx="114" cy="92" r="37"/>
-                                <circle cx="82" cy="106" r="25"/>
-                                <circle cx="137" cy="23" r="22"/>
+                            <!-- STAGE 1: SPROUT (0-2 Activities / Buckets) -->
+                            <g id="tree-stage-1" class="tree-stage active">
+                                <path d="M130 185 Q130 162 128 155" stroke="url(#trunk)" stroke-width="6" stroke-linecap="round" fill="none" />
+                                <g fill="url(#leaf)" filter="url(#shadow)">
+                                    <path d="M128 155 Q110 142 104 152 Q112 165 128 155" />
+                                    <path d="M128 155 Q146 142 152 152 Q144 165 128 155" />
+                                </g>
+                                <g fill="#bddb94" opacity=".85">
+                                    <circle cx="116" cy="148" r="3"/>
+                                </g>
                             </g>
 
-                            <!-- Leaf highlights -->
-                            <g fill="#bddb94" opacity=".85">
-                                <circle cx="102" cy="31" r="7"/>
-                                <circle cx="173" cy="49" r="6"/>
-                                <circle cx="82" cy="86" r="5"/>
-                                <circle cx="147" cy="77" r="6"/>
+                            <!-- STAGE 2: SAPLING (3-5 Activities / Buckets) -->
+                            <g id="tree-stage-2" class="tree-stage">
+                                <path d="M130 185 Q129 150 127 125" stroke="url(#trunk)" stroke-width="8" stroke-linecap="round" fill="none" />
+                                <g fill="url(#leaf)" filter="url(#shadow)">
+                                    <circle cx="127" cy="115" r="28"/>
+                                    <circle cx="108" cy="130" r="20"/>
+                                    <circle cx="145" cy="130" r="20"/>
+                                </g>
+                                <g fill="#bddb94" opacity=".85">
+                                    <circle cx="120" cy="105" r="5"/>
+                                </g>
                             </g>
-                        </g>
 
-                        <!-- Flowerpot -->
-                        <g filter="url(#shadow)">
-                            <path d="M83 174h94l-10 55H93Z" fill="url(#pot)"/>
-                            <path d="M79 171c0-5 4-9 9-9h84c5 0 9 4 9 9v10H79Z"
-                                fill="#efc4a3"/>
-                            <path d="M96 191h68" stroke="#bb7658"
-                                stroke-width="2" opacity=".35"/>
-                        </g>
-                    </svg>
+                            <!-- STAGE 3: SMALL TREE (6-8 Activities / Buckets) -->
+                            <g id="tree-stage-3" class="tree-stage">
+                                <path d="M130 185c-2-30 0-55-5-80M129 147c12-14 20-30 25-45" stroke="url(#trunk)" stroke-width="9" stroke-linecap="round" fill="none" />
+                                <g fill="url(#leaf)" filter="url(#shadow)">
+                                    <circle cx="101" cy="95" r="28"/>
+                                    <circle cx="130" cy="80" r="30"/>
+                                    <circle cx="155" cy="100" r="26"/>
+                                    <circle cx="125" cy="115" r="28"/>
+                                </g>
+                                <g fill="#bddb94" opacity=".85">
+                                    <circle cx="125" cy="65" r="5"/>
+                                    <circle cx="145" cy="90" r="5"/>
+                                </g>
+                            </g>
+
+                            <!-- STAGE 4: FULL BLOOM (9+ Activities / Buckets) -->
+                            <g id="tree-stage-4" class="tree-stage">
+                                <path
+                                    d="M128 185c-2-42 2-79-7-114M129 147c19-20 31-42 36-65M125 128c-18-13-30-28-37-45M129 109c10-20 12-38 10-54"
+                                    stroke="url(#trunk)"
+                                    stroke-width="11"
+                                    stroke-linecap="round"
+                                    fill="none"
+                                />
+                                <g fill="url(#leaf)" filter="url(#shadow)">
+                                    <circle cx="76" cy="75" r="28"/>
+                                    <circle cx="101" cy="52" r="31"/>
+                                    <circle cx="135" cy="47" r="34"/>
+                                    <circle cx="169" cy="65" r="32"/>
+                                    <circle cx="187" cy="92" r="26"/>
+                                    <circle cx="155" cy="96" r="37"/>
+                                    <circle cx="114" cy="92" r="37"/>
+                                    <circle cx="82" cy="106" r="25"/>
+                                    <circle cx="137" cy="23" r="22"/>
+                                </g>
+                                <g fill="#bddb94" opacity=".85">
+                                    <circle cx="102" cy="31" r="7"/>
+                                    <circle cx="173" cy="49" r="6"/>
+                                    <circle cx="82" cy="86" r="5"/>
+                                    <circle cx="147" cy="77" r="6"/>
+                                </g>
+                            </g>
+
+                            <!-- Flowerpot (Fixed Base) -->
+                            <g filter="url(#shadow)">
+                                <path d="M83 174h94l-10 55H93Z" fill="url(#pot)"/>
+                                <path d="M79 171c0-5 4-9 9-9h84c5 0 9 4 9 9v10H79Z" fill="#efc4a3"/>
+                                <path d="M96 191h68" stroke="#bb7658" stroke-width="2" opacity=".35"/>
+                            </g>
+                        </svg>
+                    </div>
                 </div>
                     <div class="progress-bar">
                         <p>Tree growth: 0 / 3 activities completed</p>
@@ -203,10 +237,33 @@
                 </div>
                 <p> Give yourself a moment</p>
 
-            <div class = "self_care">
+            <div class="self_care">
                 <h4>Quick care</h4>
-                <a href="breathing.html">Breathe</a>
-                <a href="reflection.html">Reflect</a>
+
+                <div class="care-options">
+
+                    <!-- Breathe -->
+                    <a href="breathing.html" class="care-card">
+                        <div class="care-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 12h4l3-7 4 14 3-7h4"/>
+                            </svg>
+                        </div>
+                        <span>Breathe</span>
+                    </a>
+
+                    <!-- Reflect -->
+                    <a href="reflection.html" class="care-card">
+                        <div class="care-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H12v17H7.5A3.5 3.5 0 0 0 4 22Z"/>
+                                <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H12v17h4.5A3.5 3.5 0 0 1 20 22Z"/>
+                            </svg>
+                        </div>
+                        <span>Reflect</span>
+                    </a>
+
+                </div>
             </div>
         </div>   <!-- end of inner .home -->
 
