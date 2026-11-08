@@ -1,0 +1,13 @@
+{
+  "mindfulMoments": 3,
+  "averageMood": "Meh",
+  "weeklyActivity": [
+    { "day": "Mon", "height": "42%" },
+    { "day": "Tue", "height": "55%" },
+    { "day": "Wed", "height": "38%" },
+    { "day": "Thu", "height": "72%" },
+    { "day": "Fri", "height": "64%" },
+    { "day": "Sat", "height": "82%" },
+    { "day": "Sun", "height": "70%" }
+  ]
+}

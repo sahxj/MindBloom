@@ -56,3 +56,15 @@ function renderStats() {
 }
 
 document.addEventListener('DOMContentLoaded', renderStats);
+
+async function loadMockData() {
+    try {
+        const response = await fetch('js/mock_stats.json');
+        const data = await response.json();
+        
+        document.getElementById('mindful-moments-count').textContent = data.mindfulMoments;
+        document.getElementById('average-mood-display').textContent = data.averageMood;
+    } catch (error) {
+        console.log("Loading default fallback data");
+    }
+}
