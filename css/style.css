@@ -625,7 +625,6 @@ section {
     animation: tree-grow 0.8s ease-out;
 }
 
-<<<<<<< Updated upstream
 
 /* WATER DROPLET ANIMATION */
 .tree-wrap {
@@ -713,7 +712,6 @@ section {
         opacity: 0;
     }
 }
-=======
 /* Profile Icon */
 .side-bar a[href="profile.html"] {
   margin-top: auto;
@@ -724,4 +722,3 @@ section {
   flex-direction: column;
   align-self: stretch;
 }
->>>>>>> Stashed changes
