@@ -2,12 +2,12 @@
 
 A lightweight pop-up app for everyday emotional friction: the gap between doing nothing and seeking clinical help.
 
-## Inspiration / Problem
+## Inspiration
 Many people experience everyday stress, but don't always know how to manage it. Professional support can be expensive or difficult to access, while social media can sometimes make stress worse. People may also struggle to recognize patterns in their emotions or find time for self-care.
 
 There is a gap between doing nothing and seeking professional help. We wanted to create something that makes everyday self-care more accessible.
 
-## What It Does (Our Solution)
+## What It Does
 MindBloom is a lightweight, interactive wellness app that encourages users to take small steps toward caring for themselves. We wanted the experience to feel light, welcoming, and rewarding rather than like another responsibility. Every completed self-care activity earns a bucket of water that helps a virtual tree grow, turning personal progress into something visual and encouraging.
 
 ## Features
@@ -33,9 +33,9 @@ MindBloom is a lightweight, interactive wellness app that encourages users to ta
 
   
 ## Tech Stack
-Node.js, JavaScript, CSS, JavaScript, Gemini API
+Node.js, JavaScript, HTML & CSS, Gemini API
 
-We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We then exported the project as code using Node.js, JavaScript, and CSS, and brought it into VS Code through GitHub. From there, we developed additional features and personalized the original design. These included Bloom the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
+We started by designing our idea in Figma, where we planned the layout, pop-up window, and initial versions of the tree, mood log, journal, and breathing screens. We began writing code using Node.js, JavaScript, and CSS in VS Code, comitting changes in GitHub. From there, we developed additional features and personalized the original design. These included Bloom the AI squirrel companion, Gemini integration, guided journal templates, the bucket-based tree-growth system, and achievements.
 
 
 ## Future Development
