@@ -280,6 +280,14 @@
             updateCount();
             updateSavedCount();
 
+            // COMPLETING THE ACTIVITY 
+            if (typeof completeActivity === 'function') {
+                completeActivity();
+            } else {
+                let buckets = parseInt(localStorage.getItem('mindbloom_buckets_logged') || '0', 10);
+                localStorage.setItem('mindbloom_buckets_logged', buckets + 1);
+            }
+
             document.getElementById("save-message").textContent =
                 "Your reflection has been saved 🌱";
         });
@@ -319,8 +327,10 @@
 
         updateCount();
         updateSavedCount();
+        
     </script>
     <script src="js/voice.js"></script>
     <script src="js/pwa.js"></script>
+    <script src="js/growth.js"></script>
 </body>
 </html>

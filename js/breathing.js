@@ -61,6 +61,15 @@ function finish() {
   bubble.style.transform = 'scale(1)';
   pauseBtn.classList.add('hidden');
   recordAction("breaths");
+  // TODO: give the tree 1 bucket of water here
+  // Increment bucket count & update local storage
+  if (typeof completeActivity === 'function') {
+    completeActivity();
+  } else {
+    // Fallback if growth.js isn't loaded
+    let buckets = parseInt(localStorage.getItem('mindbloom_buckets_logged') || '0', 10);
+    localStorage.setItem('mindbloom_buckets_logged', buckets + 1);
+}
 }
 
 function resetSession() {
