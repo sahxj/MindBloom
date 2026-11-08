@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBloom · Profile</title>
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .squirrel {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+            animation: squirrel-pop 0.4s ease both;
+        }
+        .squirrel.hidden {
+            display: none;
+        }
+        .squirrel-face {
+            width: 120px;
+            height: auto;
+            flex-shrink: 0;
+        }
+        .squirrel-bubble {
+            padding: 14px 20px;
+            background: #eef2e8;
+            border: 1px solid #dfe7dc;
+            border-radius: 18px 18px 18px 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4d6153;
+        }
+        @keyframes squirrel-pop {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <!-- Side Bar -->
+        <div class="side-bar">
+            <a href="index.html" title="Home" aria-label="Home" style="display: contents;">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 20v-8"></path>
+                        <path d="M12 12C12 7 16 4 21 4c0 5-3 9-9 9"></path>
+                        <path d="M12 15C12 10 8 7 3 7c0 5 3 9 9 9"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="chat.html" title="Chat" aria-label="Chat">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3c.7 4.1 2.9 6.3 7 7-4.1.7-6.3 2.9-7 7-.7-4.1-2.9-6.3-7-7 4.1-.7 6.3-2.9 7-7Z"></path>
+                    <path d="M19 16v5M16.5 18.5h5"></path>
+                </svg>
+            </a>
+
+            <a href="reflection.html" class="side-button" title="Journal">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z"></path>
+                    <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z"></path>
+                </svg>
+            </a>
+
+            <a href="stats.html" title="Stats" aria-label="Stats">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>
+                </svg>
+            </a>
+
+            <a href="music.html" title="Music" aria-label="Music">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 14v-2a8 8 0 0 1 16 0v2"></path>
+                    <path d="M4 14h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2ZM20 14h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z"></path>
+                </svg>
+            </a>
+
+            <a href="user_achievement.html" title="Achievements" aria-label="Achievements">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </a>
+
+            <a href="profile.html" class="bottom-icon" title="Profile" aria-label="Profile">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="home">
+            <h2>Your profile</h2>
+            <p>Private on this device.</p>
+            <input id="profile-name" type="text" placeholder="What should we call you?"
+                   style="padding: 11px 14px; border: 1px solid #e8e6df; border-radius: 12px; font: inherit;">
+            <button id="profile-save"
+                    style="align-self: flex-start; padding: 11px 22px; border: 0; border-radius: 12px; background: #5f7d63; color: white; font: inherit; cursor: pointer;">
+                Save
+            </button>
+            <span id="profile-saved"></span>
+            <div id="squirrel" class="squirrel hidden">
+                <img src="squirrel.png" alt="Squirrel" class="squirrel-face">
+                <div id="squirrel-bubble" class="squirrel-bubble"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const nameInput = document.getElementById("profile-name");
+    const saveButton = document.getElementById("profile-save");
+    const savedMessage = document.getElementById("profile-saved");
+    const squirrel = document.getElementById("squirrel");
+    const squirrelBubble = document.getElementById("squirrel-bubble");
+
+    // Show the saved name in the box when the page opens
+    nameInput.value = localStorage.getItem("mindbloom-name") || "";
+
+    function squirrelSays(text) {
+        squirrelBubble.textContent = text;
+        squirrel.classList.remove("hidden");
+    }
+
+    function saveName() {
+        const name = nameInput.value.trim();
+        localStorage.setItem("mindbloom-name", name);
+        savedMessage.textContent = "Saved ✓";
+
+        if (name !== "") {
+            squirrelSays("Hi, " + name + "! 🌰 Nice to meet you.");
+        }
+    }
+
+    saveButton.addEventListener("click", saveName);
+
+    nameInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            saveName();
+        }
+    });
+    </script>
+</body>
+</html>
